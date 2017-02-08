@@ -1,0 +1,56 @@
+.setup-page{
+  .swiper-slide{
+    padding: 40px;
+  }
+
+  .setup-slide-content{
+    @include flexbox;
+    @include flex-direction(column);
+  }
+
+  .setup-logo-wrapper{
+    padding: 40px;
+    @include flexbox;
+    @include align-items(center);
+
+  }
+
+  .setup-slide-content-push{
+    @include flex(1);
+  }
+
+  .setup-logo{
+    @include flex(0);
+    margin: 0px 0 50px;
+  }
+
+
+  .item-input{
+    border-color: rgb(37, 41, 43);
+    background-color: rgba(255, 255, 255, 0.12);
+    color: white;
+
+    input{
+      color: white;
+    }
+  }
+
+  .setup-installation-wrapper{
+    padding: 50px 0;
+
+    .setup-input{
+      width: 100%;
+      padding: 21px 10px;
+      margin: 10px 0;
+    }
+  }
+
+  .setup-help{
+    background: rgba(0, 0, 0, 0.28);
+    padding: 10px 20px;
+  }
+
+  .setup-login-foot{
+    min-height: 38px;
+  }
+}

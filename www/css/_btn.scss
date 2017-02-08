@@ -1,0 +1,119 @@
+.btn{
+  @include btn(gray);
+
+  &.btn-xss{
+    padding: 2px 4px;
+    line-height: 1em;
+    font-size: 10px;
+  }
+
+  &.btn-xxs{
+    padding: 0px 1px;
+    line-height: 1em;
+    font-size: 10px;
+  }
+
+  &.btn-icon{
+    font-size: 21px;
+    padding: 0px 9px;
+    line-height: 1.5;
+  }
+}
+
+.btn-primary{
+  @include btn(darken($primary, 35%));
+  text-shadow:  1px 1px 2px rgba(0, 0, 0, 0.35);
+}
+
+.btn-white{
+  @include btn(white, #333);
+}
+
+.btn-success{
+  @include btn($success);
+}
+
+.btn-danger{
+  @include btn($danger);
+}
+
+.btn-dark{
+  @include btn(#111);
+}
+.btn-secondary{
+  @include btn(desaturate(darken($primary, 55%), 10%));
+}
+
+.btn-link{
+  background: none;
+  font-size: 17px;
+  font-weight: 100;
+  color: $primary;
+  border-radius: 2em;
+  text-decoration: none;
+  padding: 5px 13px;
+  border: 1px solid transparent;
+
+  >i{
+    margin-left: 5px;
+  }
+
+  &:hover,
+  &:active,
+  &:focus{
+    text-decoration: none;
+    color: $primary;
+    background: none;
+    border: 1px solid $primary;
+  }
+
+  &:active:focus,
+  &.active{
+    text-decoration: none;
+    background: rgba($primary, 0.1);
+    border: 1px solid $primary;
+  }
+}
+
+
+.btn-dropzone{
+  background: none;
+  border: 2px dashed gray;
+  position: relative;
+
+  &:hover,
+  &:focus,
+  &:focus:active,
+  &:active{
+    background: darken(#3E4346, 7%);
+  }
+
+  &.dragover-upload{
+    border-style: solid;
+
+    &:before {
+      content: "Drop File here";
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      z-index: 9;
+      background-color: rgb(67, 158, 193);
+      border: 2px dashed #b0ddef;
+      text-align: center;
+      font-weight: 500;
+      line-height: 56px;
+      font-size: 28px;
+      border-radius: 6px;
+    }
+  }
+}
+
+
+.color-success{
+  color: lighten($success, 10%);
+}
+.color-danger{
+  color: $danger;
+}

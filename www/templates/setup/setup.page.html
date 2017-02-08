@@ -1,0 +1,81 @@
+<ion-content scroll="false" class="setup-page">
+  <ion-slides  options="options" slider="data.slider">
+
+    <ion-slide-page class="setup-slide-content slide-welcome">
+      <div class="setup-logo-wrapper setup-slide-content-push">
+        <img src="img/logo.png" alt="streama" class="setup-logo">
+      </div>
+
+      <button ng-click="vm.proceedToSlide(1)" class="button button-light button-full button-outline icon-right ion-chevron-right">Welcome</button>
+    </ion-slide-page>
+
+
+    <ion-slide-page class="setup-slide-content">
+
+      <h2>Installation Setup</h2>
+
+      <div class="setup-slide-content-push">
+        <div class="setup-installation-wrapper">
+          <label>Streama-Server Domain</label>
+          <i class="ion-help-circled pull-right" ng-click="vm.toggleHelp('domain')"></i>
+
+          <div class="list">
+            <label class="item item-input">
+              <i class="icon ion-earth placeholder-icon"></i>
+              <input type="url" placeholder="e.g. https://yourStreama.com" ng-model="vm.setup.domain">
+            </label>
+          </div>
+
+
+        </div>
+
+
+        <div class="setup-help help-domain" ng-if="vm.helpForDomain">
+          <h4><i class="ion-ios-help-outline"></i> Help</h4>
+          <p>You need to enter a URL to a Streama installation. Upon proceeding, the app will validate and authorize itself against that installation.</p>
+        </div>
+      </div>
+
+      <button ng-click="vm.validateDomain(vm.setup.domain)" class="button button-light button-full button-outline icon-right ion-chevron-right">Proceed to Login</button>
+
+    </ion-slide-page>
+
+
+    <ion-slide-page class="setup-slide-content" ng-if="vm.isAuthorizationEnabled">
+      <h2>Authorization</h2>
+
+      <div class="setup-slide-content-push">
+        <div class="setup-installation-wrapper">
+          <h5>Connecting to: <strong>{{ vm.setup.domain }}</strong></h5>
+
+          <div class="list">
+            <label class="item item-input">
+              <i class="icon ion-ios-person placeholder-icon"></i>
+              <input type="text" placeholder="Username" ng-model="vm.setup.username">
+            </label>
+            <label class="item item-input">
+              <i class="icon ion-key placeholder-icon"></i>
+              <input type="password" placeholder="Password" ng-model="vm.setup.password">
+            </label>
+          </div>
+
+        </div>
+
+
+        <div class="setup-help help-domain" ng-if="vm.helpForDomain">
+          <h4><i class="ion-ios-help-outline"></i> Help</h4>
+          <p>You need to enter a URL to a Streama installation. Upon proceeding, the app will validate and authorize itself against that installation.</p>
+        </div>
+      </div>
+
+      <div class="text-center setup-login-foot">
+        <button ng-click="vm.login()" class="button button-light button-full button-outline">
+          Login
+          <i ng-if="vm.loading" class="ion-load-c spin" style="margin-left: 10px;"></i>
+        </button>
+      </div>
+    </ion-slide-page>
+
+
+  </ion-slides>
+</ion-content>

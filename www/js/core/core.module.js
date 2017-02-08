@@ -1,0 +1,2 @@
+angular.module('streama.core', []);
+
