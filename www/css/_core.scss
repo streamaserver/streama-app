@@ -7,6 +7,15 @@ body,.pane, .view{
   width: 100px;
 }
 
+.streama-header{
+  background: rgba(0, 0, 0, 0.35);
+  padding: 20px;
+
+  .header-logo{
+    max-width: 100px;
+  }
+}
+
 
 h1,h2,h3,h4,h5,h6{
   color: white;

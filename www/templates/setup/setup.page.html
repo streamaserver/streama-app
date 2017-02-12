@@ -6,7 +6,9 @@
         <img src="img/logo.png" alt="streama" class="setup-logo">
       </div>
 
-      <button ng-click="vm.proceedToSlide(1)" class="button button-light button-full button-outline icon-right ion-chevron-right">Welcome</button>
+      <div class="setup-foot">
+        <button ng-click="vm.proceedToSlide(1)" class="button button-light button-full button-outline icon-right ion-chevron-right">Welcome</button>
+      </div>
     </ion-slide-page>
 
 
@@ -36,14 +38,19 @@
         </div>
       </div>
 
-      <button ng-click="vm.validateDomain(vm.setup.domain)" ng-disabled="!vm.setup.domain"
+      <div class="setup-foot">
+        <button ng-click="vm.validateDomain(vm.setup.domain)" ng-disabled="!vm.setup.domain"
               class="button button-light button-full button-outline icon-right ion-chevron-right">Proceed to Login</button>
+      </div>
 
     </ion-slide-page>
 
 
     <ion-slide-page class="setup-slide-content">
-      <h2><i ng-click="vm.proceedToSlide(1)" class="ion-chevron-left"></i>&nbsp; Authorization</h2>
+      <h2 ng-if="!vm.isAlreadySetUp"><i ng-click="vm.proceedToSlide(1)" class="ion-chevron-left"></i>&nbsp; Authorization</h2>
+      <div class="streama-header">
+        <img src="img/logo.png" alt="streama" class="header-logo">
+      </div>
 
       <div class="setup-slide-content-push">
         <div class="setup-installation-wrapper">
@@ -69,7 +76,7 @@
         </div>
       </div>
 
-      <div class="text-center setup-login-foot">
+      <div class="text-center setup-foot setup-login-foot">
         <button ng-click="vm.login()" class="button button-light button-full button-outline">
           Login
         </button>

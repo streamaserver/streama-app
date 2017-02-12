@@ -1,6 +1,6 @@
 .setup-page{
   .swiper-slide{
-    padding: 40px;
+    padding-bottom: 40px;
   }
 
   .setup-slide-content{
@@ -16,6 +16,7 @@
   }
 
   .setup-slide-content-push{
+    padding: 40px 20px;
     @include flex(1);
   }
 
@@ -24,6 +25,10 @@
     max-width: 400px;
     @include flex(0);
     margin: 0px auto 50px;
+  }
+
+  .setup-foot{
+    padding: 0px 20px;
   }
 
 

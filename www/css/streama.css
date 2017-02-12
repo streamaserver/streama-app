@@ -70,6 +70,12 @@ body, .pane, .view {
 .logo-small {
   width: 100px; }
 
+.streama-header {
+  background: rgba(0, 0, 0, 0.35);
+  padding: 20px; }
+  .streama-header .header-logo {
+    max-width: 100px; }
+
 h1, h2, h3, h4, h5, h6 {
   color: white;
   text-transform: uppercase; }
@@ -674,7 +680,7 @@ a {
   left: 0; }
 
 .setup-page .swiper-slide {
-  padding: 40px; }
+  padding-bottom: 40px; }
 .setup-page .setup-slide-content {
   display: -webkit-box;
   display: -moz-box;
@@ -695,6 +701,7 @@ a {
   -webkit-align-items: center;
   align-items: center; }
 .setup-page .setup-slide-content-push {
+  padding: 40px 20px;
   -webkit-box-flex: 1;
   -moz-box-flex: 1;
   -webkit-flex: 1;
@@ -709,6 +716,8 @@ a {
   -ms-flex: 0;
   flex: 0;
   margin: 0px auto 50px; }
+.setup-page .setup-foot {
+  padding: 0px 20px; }
 .setup-page .item-input {
   border-color: #25292b;
   background-color: rgba(255, 255, 255, 0.12);
