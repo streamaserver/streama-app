@@ -181,6 +181,11 @@ hr {
   .sort-by .btn .caret {
     margin-left: 8px; }
 
+.popup {
+  color: black; }
+  .popup h1, .popup h2, .popup h3, .popup h4, .popup h5, .popup h6 {
+    color: black; }
+
 .btn {
   background: gray;
   border-color: #787878;
@@ -696,12 +701,14 @@ a {
   -ms-flex: 1;
   flex: 1; }
 .setup-page .setup-logo {
+  width: 100%;
+  max-width: 400px;
   -webkit-box-flex: 0;
   -moz-box-flex: 0;
   -webkit-flex: 0;
   -ms-flex: 0;
   flex: 0;
-  margin: 0px 0 50px; }
+  margin: 0px auto 50px; }
 .setup-page .item-input {
   border-color: #25292b;
   background-color: rgba(255, 255, 255, 0.12);

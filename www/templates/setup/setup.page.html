@@ -1,7 +1,7 @@
 <ion-content scroll="false" class="setup-page">
-  <ion-slides  options="options" slider="data.slider">
+  <ion-slides  options="vm.sliderOptions" slider="data.slider">
 
-    <ion-slide-page class="setup-slide-content slide-welcome">
+    <ion-slide-page class="setup-slide-content slide-welcome" ng-if="!vm.isAlreadySetUp">
       <div class="setup-logo-wrapper setup-slide-content-push">
         <img src="img/logo.png" alt="streama" class="setup-logo">
       </div>
@@ -10,7 +10,7 @@
     </ion-slide-page>
 
 
-    <ion-slide-page class="setup-slide-content">
+    <ion-slide-page class="setup-slide-content" ng-if="!vm.isAlreadySetUp">
 
       <h2>Installation Setup</h2>
 
@@ -36,13 +36,14 @@
         </div>
       </div>
 
-      <button ng-click="vm.validateDomain(vm.setup.domain)" class="button button-light button-full button-outline icon-right ion-chevron-right">Proceed to Login</button>
+      <button ng-click="vm.validateDomain(vm.setup.domain)" ng-disabled="!vm.setup.domain"
+              class="button button-light button-full button-outline icon-right ion-chevron-right">Proceed to Login</button>
 
     </ion-slide-page>
 
 
-    <ion-slide-page class="setup-slide-content" ng-if="vm.isAuthorizationEnabled">
-      <h2>Authorization</h2>
+    <ion-slide-page class="setup-slide-content">
+      <h2><i ng-click="vm.proceedToSlide(1)" class="ion-chevron-left"></i>&nbsp; Authorization</h2>
 
       <div class="setup-slide-content-push">
         <div class="setup-installation-wrapper">
@@ -71,7 +72,6 @@
       <div class="text-center setup-login-foot">
         <button ng-click="vm.login()" class="button button-light button-full button-outline">
           Login
-          <i ng-if="vm.loading" class="ion-load-c spin" style="margin-left: 10px;"></i>
         </button>
       </div>
     </ion-slide-page>
