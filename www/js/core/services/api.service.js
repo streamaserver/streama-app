@@ -1,7 +1,9 @@
 angular.module('streama.core')
 	.service('apiService', function ($http, localStorageService) {
 		var basePath = localStorageService.get('streamaDomain');
+		var apiBase = 'api/v1/';
 		return{
+
 			core: {
 				login: function (data) {
 					return $http({
@@ -17,12 +19,14 @@ angular.module('streama.core')
 					return $http.post(basePath + 'logoff');
 				},
 				currentUser: function () {
-					return $http.get(basePath + 'api/v1/currentUser');
+					return $http.get(basePath + apiBase + 'currentUser');
 				}
 			},
+
+
 			setup: {
 				validateDomain: function (domain) {
-					return $http.get(domain + '/api/v1/validateDomain');
+					return $http.get(domain + apiBase + 'validateDomain');
 				},
 				saveDomain: function (domain) {
 					localStorageService.set('streamaDomain', domain);
@@ -30,6 +34,24 @@ angular.module('streama.core')
 				},
 				getDomain: function () {
 					return localStorageService.get('streamaDomain');
+				}
+			},
+
+
+
+
+			dash: {
+				listContinueWatching: function () {
+					return $http.get(basePath + apiBase + 'dash/listContinueWatching');
+				},
+				listShows: function (params) {
+					return $http.get(basePath + apiBase + 'dash/listShows');
+				},
+				listMovies: function (params) {
+					return $http.get(basePath + apiBase + 'dash/listMovies');
+				},
+				listGenericVideos: function (params) {
+					return $http.get(basePath + apiBase + 'dash/listGenericVideos');
 				}
 			}
 		}

@@ -10,17 +10,33 @@ angular.module('streama').config(function($stateProvider, $urlRouterProvider) {
   .state('setup', {
     url: '/setup',
     controller: 'SetupCtrl as vm',
-		templateUrl: 'templates/setup/setup.page.html'
-  })
-
-  .state('app.search', {
-    url: '/search',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/search.html'
-      }
+		templateUrl: 'templates/setup/setup.page.html',
+    resolve: {
+      currentUser: currentUserReject
     }
   })
+
+  .state('main.dash', {
+    url: '/dash',
+		resolve: {
+			currentUser: currentUserResolve
+		},
+		views: {
+			'content': {
+				templateUrl: 'templates/dash/dash.page.html',
+				controller: 'DashCtrl as vm'
+			}
+		}
+  })
+
+  // .state('app.search', {
+  //   url: '/search',
+  //   views: {
+  //     'menuContent': {
+  //       templateUrl: 'templates/search.html'
+  //     }
+  //   }
+  // })
 
   // .state('app.browse', {
   //     url: '/browse',
@@ -52,3 +68,24 @@ angular.module('streama').config(function($stateProvider, $urlRouterProvider) {
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/setup');
 });
+
+
+function currentUserResolve(apiService, $state) {
+  return apiService.core.currentUser().then(function (response) {
+    if(!response.data.id){
+      $state.go('setup');
+    }else{
+      return response.data;
+    }
+  })
+}
+
+function currentUserReject(apiService, $state) {
+  return apiService.core.currentUser().then(function (response) {
+    if(response.data.id){
+      $state.go('main.dash');
+    }else{
+      return;
+    }
+  })
+}

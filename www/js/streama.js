@@ -3,8 +3,13 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-// 'starter.controllers' is found in setup.controller.js
-angular.module('streama', ['ionic', 'ionic.cloud', 'LocalStorageModule', 'streama.setup', 'streama.core'])
+// 'starter.controllers' is found in dash.controller.js
+angular.module('streama', [
+	//external libs
+	'ionic', 'ionic.cloud', 'LocalStorageModule',
+
+	//streama modules
+	'streama.setup', 'streama.core', 'streama.dash', 'angular-owl-carousel'])
 
   .run(function($ionicPlatform) {
     $ionicPlatform.ready(function() {

@@ -6,6 +6,9 @@
   },
   "dependencies": {
     "lodash": "^4.17.4",
-    "angular-local-storage": "^0.5.2"
+    "angular-local-storage": "^0.5.2",
+    "angular-owl-carousel": "^0.3.0",
+    "owl.carousel": "^2.2.0",
+    "angular-translate": "^2.14.0"
   }
 }
