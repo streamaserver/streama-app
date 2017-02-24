@@ -1,0 +1,34 @@
+<div class="media-list-item media-poster-item">
+  <div class="media-item" >
+
+    <img ng-if="item.video.poster_image_src" ng-src="{{::item.video.poster_image_src}}"/>
+    <img ng-if="!item.video.poster_image_src && item.video.poster_path"
+         ng-src="https://image.tmdb.org/t/p/w300/{{::item.video.poster_path}}"/>
+    <img ng-if="!item.video.poster_path && !item.video.poster_image_src"
+         ng-src="{{basePath}}assets/poster-not-found.png"/>
+
+    <div class="play-text">
+      <h4>Continue "<span ng-bind="::(item.video.title || item.video.show.name)"></span>"</h4>
+      <button class=" btn btn-secondary btn-xss complete-watching" ng-click="markCompleted(viewingStatus)">
+        {{'DASHBOARD.MARK_COMPLETED' | translate}}</button>
+      <p ng-show="item.video.isEpisode"><span ng-bind="::item.video.episodeString"></span></p>
+    </div>
+
+    <i class="info-icon ion-ios-information" ng-click="showDetails(item.video)"></i>
+    <a class="play-icon ion-ios-play" ui-sref="player({videoId: item.video.id})"></a>
+  </div>
+
+  <div class="media-progress-wrapper">
+
+    <div class="progress-info" ng-show="item.video.isEpisode">
+      <span ng-bind="::item.video.episodeString"></span> - <span ng-bind="::item.video.title"></span>
+    </div>
+    <div class="progress-info" ng-show="!item.video.isEpisode" ng-bind="::item.video.title"></div>
+
+    <div class="progress-time"><span ng-bind="::(item.currentPlayTime | streamaSecondsToDateTime | date:'mm:ss')"></span> min</div>
+
+    <div class="media-progress" ng-if="item.runtime">
+      <div class="progress-inner" style="width: {{item.currentPlayTime / item.runtime * 100}}%;"></div>
+    </div>
+  </div>
+</div>

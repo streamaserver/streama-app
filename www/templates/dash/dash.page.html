@@ -1,42 +1,35 @@
 <ion-view view-title="Dash">
-  <ion-content>
-    <h3>Continue watching</h3>
+  <ion-content class="dashboard">
 
-    <div owl-carousel="vm.continueWatchingList" owl-options="vm.carouselOptions">
-      <div class="media-list-item media-poster-item">
-        <div class="media-item" >
+    <div ng-if="vm.newReleases.length" class="new-releases-slider">
+      <h3>{{'DASHBOARD.NEW_RELEASES' | translate}}</h3>
 
-          <img ng-if="item.video.poster_image_src" ng-src="{{::item.video.poster_image_src}}"/>
-          <img ng-if="!item.video.poster_image_src && item.video.poster_path"
-               ng-src="https://image.tmdb.org/t/p/w300/{{::item.video.poster_path}}"/>
-          <img ng-if="!item.video.poster_path && !item.video.poster_image_src"
-               ng-src="{{basePath}}assets/poster-not-found.png"/>
 
-          <div class="play-text">
-            <h4>Continue "<span ng-bind="::(item.video.title || item.video.show.name)"></span>"</h4>
-            <button class=" btn btn-secondary btn-xss complete-watching" ng-click="markCompleted(viewingStatus)">
-              {{'DASHBOARD.MARK_COMPLETED' | translate}}</button>
-            <p ng-show="item.video.isEpisode"><span ng-bind="::item.video.episodeString"></span></p>
-          </div>
-
-          <i class="info-icon ion-ios-information" ng-click="showDetails(item.video)"></i>
-          <a class="play-icon ion-ios-play" ui-sref="player({videoId: item.video.id})"></a>
-        </div>
-
-        <div class="media-progress-wrapper">
-
-          <div class="progress-info" ng-show="item.video.isEpisode">
-            <span ng-bind="::item.video.episodeString"></span> - <span ng-bind="::item.video.title"></span>
-          </div>
-          <div class="progress-info" ng-show="!item.video.isEpisode" ng-bind="::item.video.title"></div>
-
-          <div class="progress-time"><span ng-bind="::(item.currentPlayTime | secondsToDateTime | date:'mm:ss')"></span> min</div>
-
-          <div class="media-progress" ng-if="item.runtime">
-            <div class="progress-inner" style="width: {{item.currentPlayTime / item.runtime * 100}}%;"></div>
+      <div owl-carousel="vm.newReleases" owl-options="vm.highlightCarouselOptions">
+        <div class="new-releases-slide">
+          <img class="poster-image" ng-src="https://image.tmdb.org/t/p/w342/{{item.media.poster_path}}" class="pull-left">
+          <div class="image-background" style="background-image: url('https://image.tmdb.org/t/p/w1280/{{item.media.backdrop_path}}')">
+            <i class="info-icon ion-ios-information" ng-click="showDetails(item.media)"></i>
+            <div class="new-release-footer">
+              <a class="play-icon ion-ios-play" ui-sref="player({videoId: item.videoToPlayId})"></a>
+              <div class="new-releases-description">
+                <h3>
+                  {{item.media.title || item.media.name}}
+                  <span ng-if="item.media.release_date">({{item.media.release_date.substring(0,4)}})</span>
+                </h3>
+                <h4>{{item.description}}</h4>
+                <p>{{item.media.overview}}</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
+    </div>
+
+    <h3>Continue watching</h3>
+
+    <div owl-carousel="vm.continueWatchingList" owl-options="vm.carouselOptions">
+      <streama-media-item item="item"></streama-media-item>
     </div>
 
   </ion-content>

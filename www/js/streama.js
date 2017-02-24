@@ -9,7 +9,7 @@ angular.module('streama', [
 	'ionic', 'ionic.cloud', 'LocalStorageModule',
 
 	//streama modules
-	'streama.setup', 'streama.core', 'streama.dash', 'angular-owl-carousel'])
+	'streama.setup', 'streama.core', 'streama.dash', 'angular-owl-carousel', 'streama.translations'])
 
   .run(function($ionicPlatform) {
     $ionicPlatform.ready(function() {

@@ -1,5 +1,5 @@
 {
-  "name": "HelloIonic",
+  "name": "streama-app",
   "private": "true",
   "devDependencies": {
     "ionic": "driftyco/ionic-bower#1.3.2"
@@ -9,6 +9,7 @@
     "angular-local-storage": "^0.5.2",
     "angular-owl-carousel": "^0.3.0",
     "owl.carousel": "^2.2.0",
-    "angular-translate": "^2.14.0"
+    "angular-translate": "^2.14.0",
+    "streama-i18n": "*"
   }
 }

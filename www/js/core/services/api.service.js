@@ -52,6 +52,9 @@ angular.module('streama.core')
 				},
 				listGenericVideos: function (params) {
 					return $http.get(basePath + apiBase + 'dash/listGenericVideos');
+				},
+				listNewReleases: function (params) {
+					return $http.get(basePath + apiBase + 'dash/listNewReleases');
 				}
 			}
 		}
