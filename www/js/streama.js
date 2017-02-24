@@ -11,7 +11,7 @@ angular.module('streama', [
 	//streama modules
 	'streama.setup', 'streama.core', 'streama.dash', 'angular-owl-carousel', 'streama.translations'])
 
-  .run(function($ionicPlatform) {
+  .run(function($ionicPlatform, $rootScope) {
     $ionicPlatform.ready(function() {
       // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
       // for form inputs)
@@ -24,6 +24,9 @@ angular.module('streama', [
         // org.apache.cordova.statusbar required
         StatusBar.styleDefault();
       }
+
+
+			$rootScope.navLogo = '<img class="title-image" src="img/logo.png" />';
     });
   })
 

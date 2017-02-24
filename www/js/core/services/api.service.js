@@ -55,6 +55,9 @@ angular.module('streama.core')
 				},
 				listNewReleases: function (params) {
 					return $http.get(basePath + apiBase + 'dash/listNewReleases');
+				},
+				listRecommendations: function (params) {
+					return $http.get(basePath + apiBase + 'dash/listRecommendations');
 				}
 			}
 		}

@@ -1,4 +1,4 @@
-<ion-view view-title="Dash">
+<ion-view title="{{$root.navLogo}}" class="dash" right-buttons="bla">
   <ion-content class="dashboard">
 
     <div ng-if="vm.newReleases.length" class="new-releases-slider">
@@ -26,9 +26,31 @@
       </div>
     </div>
 
-    <h3>Continue watching</h3>
 
+    <h3>{{'DASHBOARD.CONTINUE_WATCHING' | translate}}</h3>
     <div owl-carousel="vm.continueWatchingList" owl-options="vm.carouselOptions">
+      <streama-media-continue-watching-item item="item"></streama-media-continue-watching-item>
+    </div>
+
+    <h3>{{'DASHBOARD.RECOMMENDATIONS' | translate}}</h3>
+    <div owl-carousel="vm.recommendations" owl-options="vm.carouselOptions">
+      <streama-media-item item="item"></streama-media-item>
+    </div>
+
+    <h3>{{'DASHBOARD.DISCOVER_SHOWS' | translate}}</h3>
+    <div owl-carousel="vm.shows" owl-options="vm.carouselOptions">
+      <streama-media-item item="item"></streama-media-item>
+    </div>
+
+
+    <h3>{{'DASHBOARD.DISCOVER_MOVIES' | translate}}</h3>
+    <div owl-carousel="vm.movies" owl-options="vm.carouselOptions">
+      <streama-media-item item="item"></streama-media-item>
+    </div>
+
+
+    <h3>{{'DASHBOARD.DISCOVER_OTHER_VIDEOS' | translate}}</h3>
+    <div owl-carousel="vm.genericVideos" owl-options="vm.carouselOptions">
       <streama-media-item item="item"></streama-media-item>
     </div>
 

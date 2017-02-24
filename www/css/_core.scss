@@ -17,6 +17,26 @@ body,.pane, .view{
 }
 
 
+.menu{
+  background: rgb(24, 26, 27);
+  .item {
+    border-color: #25292b;
+    background-color: #181a1b;
+    color: #fff;
+  }
+
+}
+.bar.bar-stable.bar-header{
+  background: rgb(24, 26, 27);
+  padding: 5px 15px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.11);
+
+  img{
+    height: 70%;
+    margin-top: 7px;
+  }
+}
+
 h1,h2,h3,h4,h5,h6{
   color: white;
   text-transform: uppercase;

@@ -4,12 +4,12 @@ angular.module('streama.dash')
 	$ionicSideMenuDelegate.canDragContent(false);
 	$ionicScrollDelegate.freezeAllScrolls(true);
 
-	apiService.dash.listContinueWatching().then(function (response) {vm.newReleases = response.data});
 	apiService.dash.listContinueWatching().then(function (response) {vm.continueWatchingList = response.data});
 	apiService.dash.listShows().then(function (response) {vm.shows = response.data});
 	apiService.dash.listMovies().then(function (response) {vm.movies = response.data});
 	apiService.dash.listGenericVideos().then(function (response) {vm.genericVideos = response.data});
 	apiService.dash.listNewReleases().then(function (response) {vm.newReleases = response.data;});
+	apiService.dash.listRecommendations().then(function (response) {vm.recommendations = response.data;});
 
 
 	vm.highlightCarouselOptions = {

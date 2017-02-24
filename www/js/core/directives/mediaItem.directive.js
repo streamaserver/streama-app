@@ -9,9 +9,20 @@ angular.module('streama.core')
 			scope: {
 				item: '='
 			},
-			templateUrl: 'templates/cores/mediaItem.directive.html',
+			templateUrl: 'templates/core/mediaItem.directive.html',
 			link: function ($scope, $element, $attrs) {
 				console.log('%c called link', 'color: deeppink; font-weight: bold; text-shadow: 0 0 5px deeppink;');
+				$scope.showDetails = showDetails;
+				$scope.playMedia = playMedia;
+
+				
+				function showDetails() {
+					console.log('%c showDetails', 'color: deeppink; font-weight: bold; text-shadow: 0 0 5px deeppink;');
+				}
+				function playMedia(e, item) {
+					console.log('%c playMedia', 'color: deeppink; font-weight: bold; text-shadow: 0 0 5px deeppink;');
+					e.stopPropagation();
+				}
 			}
 		}
 	});

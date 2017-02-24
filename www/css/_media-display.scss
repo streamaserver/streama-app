@@ -40,6 +40,10 @@
     @include vendor-property('transition', 'transform .3s');
   }
 
+  .media-name{
+    margin: 5px 0 0;
+  }
+
   .info-icon,
   .warning-icon{
     position: absolute;
@@ -49,7 +53,6 @@
     font-size: 31px;
     color: $primary;
     text-shadow: 1px 1px 1px rgb(0, 0, 0);
-    opacity: 0;
     @include vendor-property('transition', 'opacity .2s');
   }
 
@@ -63,17 +66,17 @@
     top: 0;
     left: 0;
     font-size: 14px;
-    background-color: rgba(0, 0, 0, 0.71);
+    //background-color: rgba(0, 0, 0, 0.71);
     right: 0;
     bottom: 0;
-    padding: 12px;
+    padding: 0px;
     font-weight: bold;
-    opacity: 0;
     @include vendor-property('transition', 'opacity .2s');
 
     h4{
       font-size: 17px;
       margin: 5px 0;
+      padding: 14px;
     }
     p{
       font-weight: 300;
@@ -85,7 +88,6 @@
     position: absolute;
     bottom: 7px;
     left: 7px;
-    opacity: 0;
     @include vendor-property('transition', 'opacity .2s');
   }
 
@@ -105,7 +107,6 @@
     box-shadow: 0px 2px 2px 2px rgba(0, 0, 0, 0.35);
     text-shadow: 0 1px 1px rgba(0, 0, 0, 0.35);
     cursor: pointer;
-    opacity: 0;
     background-color: rgba(0, 0, 0, 0.78);
 
     @include vendor-property('transition', 'opacity .2s');
@@ -113,13 +114,6 @@
 
 
   &:hover{
-    .play-icon,
-    .complete-watching,
-    .info-icon,
-    .play-text{
-      opacity: 1;
-    }
-
     img{
       @include vendor-property('transform', 'scale(1.2)');
     }
