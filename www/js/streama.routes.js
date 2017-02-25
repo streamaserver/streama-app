@@ -77,7 +77,11 @@ function currentUserResolve(apiService, $state) {
     }else{
       return response.data;
     }
-  })
+  }, function (err) {
+		if(err.status == 500){
+			toastr.error('An internal Server-Error occured.');
+		}
+	})
 }
 
 function currentUserReject(apiService, $state) {
@@ -87,5 +91,9 @@ function currentUserReject(apiService, $state) {
     }else{
       return;
     }
-  })
+  }, function (err) {
+		if(err.status == 500){
+			toastr.error('An internal Server-Error occured.');
+		}
+	})
 }
