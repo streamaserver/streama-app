@@ -1,43 +1,14 @@
-.media-list{
-  @include clearfix;
-  margin-right: -15px;
-}
-
-
-
-
-.media-list-item{
-  float: left;
-  margin-right: 15px;
-  width: 280px;
-  background-color: rgba(0, 0, 0, 0.22);
-  padding: 12px;
-  margin-bottom: 15px;
-
-  .media-item{
-    margin: 0 -12px;
-  }
-}
-
-.media-poster-item{
-  width: 100%
-;
-
-  .media-item{
-    height: auto;
-  }
-}
-
 .media-item{
+  background-color: rgba(0, 0, 0, 0.22);
+}
+
+.media-item-inner{
   position: relative;
-  height: 158px;
   overflow: hidden;
 
   img{
     width: 100%;
     height: auto;
-    @include vendor-property('transform', 'scale(1)');
-    @include vendor-property('transition', 'transform .3s');
   }
 
   .media-name{
@@ -53,42 +24,11 @@
     font-size: 31px;
     color: $primary;
     text-shadow: 1px 1px 1px rgb(0, 0, 0);
-    @include vendor-property('transition', 'opacity .2s');
   }
 
   .warning-icon{
     opacity: 1;
     color: $danger;
-  }
-
-  .play-text{
-    position: absolute;
-    top: 0;
-    left: 0;
-    font-size: 14px;
-    //background-color: rgba(0, 0, 0, 0.71);
-    right: 0;
-    bottom: 0;
-    padding: 0px;
-    font-weight: bold;
-    @include vendor-property('transition', 'opacity .2s');
-
-    h4{
-      font-size: 17px;
-      margin: 5px 0;
-      padding: 14px;
-    }
-    p{
-      font-weight: 300;
-      font-size: 12px;
-    }
-  }
-
-  .complete-watching{
-    position: absolute;
-    bottom: 7px;
-    left: 7px;
-    @include vendor-property('transition', 'opacity .2s');
   }
 
 
@@ -108,32 +48,8 @@
     text-shadow: 0 1px 1px rgba(0, 0, 0, 0.35);
     cursor: pointer;
     background-color: rgba(0, 0, 0, 0.78);
-
-    @include vendor-property('transition', 'opacity .2s');
   }
 
-
-  &:hover{
-    img{
-      @include vendor-property('transform', 'scale(1.2)');
-    }
-  }
-
-
-}
-
-.media-list-item{
-  &.no-files{
-    img{
-      opacity: 0.35;
-    }
-
-    .media-item:hover{
-      img{
-        @include vendor-property('transform', 'inherit');
-      }
-    }
-  }
 }
 
 .volume-info{
@@ -170,33 +86,6 @@
 }
 
 
-
-.media-progress-wrapper{
-  margin-top: 8px;
-
-  .progress-time{
-    font-size: 80%;
-    opacity: 0.7;
-  }
-
-  .progress-info{
-    font-weight: bold;
-    line-height: 1.2em;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  .media-progress{
-    margin-top: 5px;
-    height: 3px;
-    background-color: #333;
-  }
-
-  .progress-inner{
-    height: 3px;
-    background-color: $primary;
-  }
-}
 
 .data-display{
   opacity: 0.7;
@@ -257,7 +146,7 @@
     overflow: hidden;
   }
 
-  .media-item{
+  .media-item-inner{
     max-height: 150px;
     overflow: hidden;
   }
@@ -316,11 +205,11 @@
 
 
 .similar-media{
-  .media-list-item{
+  .media-item{
     width: 180px;
     position: relative;
 
-    .media-item{
+    .media-item-inner{
       height: 270px;
       overflow: hidden;
       margin-bottom: 10px;

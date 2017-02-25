@@ -37,9 +37,6 @@ angular.module('streama.core')
 
 			setup: {
 				validateDomain: function (domain) {
-					if(!_.endsWith(domain, '/')){
-						domain += '/'
-					}
 					return $http.get(domain + apiBase + 'validateDomain');
 				},
 				saveDomain: function (domain) {

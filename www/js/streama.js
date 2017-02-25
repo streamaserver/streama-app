@@ -11,30 +11,6 @@ angular.module('streama', [
 	//streama modules
 	'streama.setup', 'streama.core', 'streama.dash', 'angular-owl-carousel', 'streama.translations'])
 
-  .run(function($ionicPlatform, $rootScope, apiService, $state) {
-    $ionicPlatform.ready(function() {
-      // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
-      // for form inputs)
-      if (window.cordova && window.cordova.plugins.Keyboard) {
-        cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-        cordova.plugins.Keyboard.disableScroll(true);
-
-      }
-      if (window.StatusBar) {
-        // org.apache.cordova.statusbar required
-        StatusBar.styleDefault();
-      }
-
-
-			$rootScope.navLogo = '<img class="title-image" src="img/logo.png" />';
-      $rootScope.logout = function () {
-				apiService.core.logout().then(function () {
-					$state.go('setup');
-				});
-			};
-    });
-  })
-
 
 	.config(function($ionicCloudProvider, $httpProvider) {
 		// $httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';

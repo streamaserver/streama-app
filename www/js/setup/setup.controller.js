@@ -48,14 +48,20 @@ angular.module('streama.setup')
 	function validateDomain(domain) {
 		vm.isAuthorizationEnabled = true;
 
+		if(!_.endsWith(domain, '/')){
+			domain += '/';
+		}
+
 		$ionicLoading.show({
 			template: 'Validating Domain... <br><br> <ion-spinner></ion-spinner>'
 		});
 
 		apiService.setup.validateDomain(domain).then(function (response) {
+
 			if(response.data.accessGranted){
 				$ionicLoading.hide();
 				vm.slider.slideTo(2);
+				vm.setup.domain = domain;
 				apiService.setup.saveDomain(domain);
 			}
 		}, function (err) {
@@ -75,7 +81,7 @@ angular.module('streama.setup')
 			'remember-me': true
 		};
 
-		apiService.core.login(payload).then(afterLogin, afterLogin);
+		apiService.core.login(payload).then(afterLogin, onLoginErr);
 
 
 
@@ -93,6 +99,17 @@ angular.module('streama.setup')
 				$ionicLoading.hide();
 				$state.go('main.dash');
 			});
+		}
+
+		function onLoginErr(err) {
+			console.log('%c arguments', 'color: deeppink; font-weight: bold; text-shadow: 0 0 5px deeppink;', arguments);
+			if(err.status == -1){
+				afterLogin();
+			}else{
+				$ionicLoading.hide();
+				toastr.error('error logging in. Please try again or try a different base path.')
+			}
+
 		}
 
 

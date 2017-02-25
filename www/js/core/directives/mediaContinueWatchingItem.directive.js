@@ -11,7 +11,18 @@ angular.module('streama.core')
 			},
 			templateUrl: 'templates/core/mediaContinueWatchingItem.directive.html',
 			link: function ($scope, $element, $attrs) {
-				console.log('%c called link mediaContinueWatchingItem', 'color: deeppink; font-weight: bold; text-shadow: 0 0 5px deeppink;');
+				$scope.showDetails = showDetails;
+				$scope.playMedia = playMedia;
+
+
+				function showDetails(e) {
+					console.log('%c showDetails', 'color: deeppink; font-weight: bold; text-shadow: 0 0 5px deeppink;');
+					e.stopPropagation();
+				}
+				function playMedia(e, item) {
+					console.log('%c playMedia', 'color: deeppink; font-weight: bold; text-shadow: 0 0 5px deeppink;');
+				}
+
 			}
 		}
 	});

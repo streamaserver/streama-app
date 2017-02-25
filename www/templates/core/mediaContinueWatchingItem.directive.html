@@ -1,31 +1,30 @@
-<div class="media-list-item media-poster-item">
-  <div class="media-item" ng-click="showDetails(item.video)">
+<div class="media-item media-continue-watching-item" ng-click="playMedia($event, item)">
+  <div class="media-item-inner">
 
-    <img ng-if="item.video.poster_image_src" ng-src="{{::item.video.poster_image_src}}"/>
-    <img ng-if="!item.video.poster_image_src && item.video.poster_path"
-         ng-src="https://image.tmdb.org/t/p/w300/{{::item.video.poster_path}}"/>
-    <img ng-if="!item.video.poster_path && !item.video.poster_image_src"
-         ng-src="{{basePath}}assets/poster-not-found.png"/>
+    <img ng-if="item.video.backdrop_path" ng-src="https://image.tmdb.org/t/p/w1280/{{item.video.backdrop_path}}"/>
+    <img ng-if="!item.video.backdrop_path" ng-src="img/poster-not-found.png"/>
 
-    <div class="play-text">
-      <button class=" btn btn-secondary btn-xss complete-watching" ng-click="markCompleted(viewingStatus)">
-        {{'DASHBOARD.MARK_COMPLETED' | translate}}</button>
-    </div>
-
-    <a class="play-icon ion-ios-play" ng-click="playMedia($event, item)"></a>
+    <a class="play-icon ion-ios-play"></a>
   </div>
 
-  <div class="media-progress-wrapper" ng-click="playMedia($event, item)">
+  <div class="media-progress-wrapper">
 
-    <div class="progress-info" ng-show="item.video.isEpisode">
-      <span ng-bind="::item.video.episodeString"></span> - <span ng-bind="::item.video.title"></span>
-    </div>
-    <div class="progress-info" ng-show="!item.video.isEpisode" ng-bind="::item.video.title"></div>
+    <div class="row">
+      <div class="col">
+        <div class="progress-info" ng-show="item.video.isEpisode">
+          <span ng-bind="::item.video.episodeString"></span> - <span ng-bind="::item.video.title"></span>
+        </div>
+        <div class="progress-info" ng-show="!item.video.isEpisode" ng-bind="::item.video.title"></div>
 
-    <div class="progress-time"><span ng-bind="::(item.currentPlayTime | streamaSecondsToDateTime | date:'mm:ss')"></span> min</div>
+        <div class="progress-time"><span ng-bind="::(item.currentPlayTime | streamaSecondsToDateTime | date:'mm:ss')"></span> min</div>
 
-    <div class="media-progress" ng-if="item.runtime">
-      <div class="progress-inner" style="width: {{item.currentPlayTime / item.runtime * 100}}%;"></div>
+        <div class="media-progress" ng-if="item.runtime">
+          <div class="progress-inner" style="width: {{item.currentPlayTime / item.runtime * 100}}%;"></div>
+        </div>
+      </div>
+      <div class="continue-watching-info" ng-click="showDetails($event, item.video)">
+        <i class="ion-ios-information-outline"></i>
+      </div>
     </div>
   </div>
 </div>

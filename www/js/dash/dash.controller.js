@@ -4,6 +4,7 @@ angular.module('streama.dash')
 	$ionicSideMenuDelegate.canDragContent(false);
 	$ionicScrollDelegate.freezeAllScrolls(true);
 
+
 	apiService.dash.listContinueWatching().then(function (response) {vm.continueWatchingList = response.data});
 	apiService.dash.listShows().then(function (response) {vm.shows = response.data});
 	apiService.dash.listMovies().then(function (response) {vm.movies = response.data});
@@ -12,6 +13,13 @@ angular.module('streama.dash')
 	apiService.dash.listRecommendations().then(function (response) {vm.recommendations = response.data;});
 
 
+	vm.swiperOptions = {
+		pagination: '.swiper-pagination',
+		slidesPerView: 'auto',
+		paginationClickable: true,
+		spaceBetween: 8,
+		freeMode: true
+	};
 	vm.highlightCarouselOptions = {
 		loop: false,
 		items: 1,

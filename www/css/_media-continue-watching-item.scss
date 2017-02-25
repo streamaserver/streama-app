@@ -1,0 +1,39 @@
+.media-continue-watching-item{
+
+  .continue-watching-info{
+    @include align-self(center);
+    i{
+      font-size: 30px;
+    }
+  }
+}
+
+
+.media-progress-wrapper{
+  margin-top: 8px;
+  margin-bottom: 8px;
+
+  .progress-time{
+    font-size: 80%;
+    opacity: 0.7;
+  }
+
+  .progress-info{
+    font-weight: bold;
+    line-height: 1.2em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 190px;
+  }
+  .media-progress{
+    margin-top: 5px;
+    height: 3px;
+    background-color: #333;
+  }
+
+  .progress-inner{
+    height: 3px;
+    background-color: $primary;
+  }
+}

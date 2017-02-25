@@ -1,11 +1,4 @@
-<div class="media-list-item media-poster-item" ng-click="showDetails(item)">
-  <div class="media-item">
-    <img ng-if="item.poster_path" ng-src="https://image.tmdb.org/t/p/w300/{{::item.poster_path}}"/>
-    <img ng-if="!item.poster_path && !item.manualInput" ng-src="{{basePath}}assets/poster-not-found.png"/>
-
-    <img ng-show="item.manualInput && item.poster_image_src" ng-src="{{::item.poster_image_src}}">
-
-    <a class="play-icon ion-ios-play" ng-click="playMedia($event, item)"></a>
+<div class="media-item media-poster-item" ng-click="showDetails(item)">
+  <div class="media-item-inner" ng-style="getPosterBackground(item)">
   </div>
-  <p class="media-name" ng-bind="::item.name"></p>
 </div>

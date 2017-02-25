@@ -11,17 +11,29 @@ angular.module('streama.core')
 			},
 			templateUrl: 'templates/core/mediaItem.directive.html',
 			link: function ($scope, $element, $attrs) {
-				console.log('%c called link', 'color: deeppink; font-weight: bold; text-shadow: 0 0 5px deeppink;');
 				$scope.showDetails = showDetails;
-				$scope.playMedia = playMedia;
 
-				
+				$scope.getPosterBackground = getPosterBackground;
+
+				function getPosterBackground(item) {
+					var imagePath = 'img/poster-not-found.png';
+					var result = {};
+
+					if(item.poster_path){
+						imagePath =  'https://image.tmdb.org/t/p/w300/' + item.poster_path;
+					}
+					if(item.manualInput && item.poster_image_src){
+						imagePath = item.poster_image_src;
+					}
+					if(!item.poster_path && !item.manualInput){
+						imagePath = 'img/poster-not-found.png';
+					}
+
+					result.backgroundImage = 'url('+ imagePath +')';
+					return result;
+				}
 				function showDetails() {
 					console.log('%c showDetails', 'color: deeppink; font-weight: bold; text-shadow: 0 0 5px deeppink;');
-				}
-				function playMedia(e, item) {
-					console.log('%c playMedia', 'color: deeppink; font-weight: bold; text-shadow: 0 0 5px deeppink;');
-					e.stopPropagation();
 				}
 			}
 		}
