@@ -23,6 +23,15 @@ body,.pane, .view{
     border-color: #25292b;
     background-color: #181a1b;
     color: #fff;
+
+    .item-content{
+      background: transparent;
+      color: inherit;
+
+      i{
+        margin-right: 8px;
+      }
+    }
   }
 
 }

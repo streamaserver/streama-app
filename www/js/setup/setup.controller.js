@@ -26,6 +26,10 @@ angular.module('streama.setup')
 
 		$scope.$on("$ionicSlides.sliderInitialized", function(event, data){
 			vm.slider = data.slider; // grab an instance of the slider
+
+			if(vm.isAlreadySetUp){
+				proceedToSlide(2);
+			}
 		});
 	}
 
@@ -52,7 +56,7 @@ angular.module('streama.setup')
 			if(response.data.accessGranted){
 				$ionicLoading.hide();
 				vm.slider.slideTo(2);
-				apiService.setup.saveDomain(response.data.basePath);
+				apiService.setup.saveDomain(domain);
 			}
 		}, function (err) {
 			$ionicLoading.hide();
@@ -87,7 +91,7 @@ angular.module('streama.setup')
 					return;
 				}
 				$ionicLoading.hide();
-				$state.go('dash');
+				$state.go('main.dash');
 			});
 		}
 

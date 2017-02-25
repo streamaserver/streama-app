@@ -82,6 +82,11 @@ body, .pane, .view {
     border-color: #25292b;
     background-color: #181a1b;
     color: #fff; }
+    .menu .item .item-content {
+      background: transparent;
+      color: inherit; }
+      .menu .item .item-content i {
+        margin-right: 8px; }
 
 .bar.bar-stable.bar-header {
   background: #181a1b;
@@ -1020,6 +1025,8 @@ a {
 
 .setup-page .swiper-slide {
   padding-bottom: 40px; }
+.setup-page .swiper-pagination {
+  display: none; }
 .setup-page .setup-slide-content {
   display: -webkit-box;
   display: -moz-box;

@@ -32,10 +32,12 @@
       <streama-media-continue-watching-item item="item"></streama-media-continue-watching-item>
     </div>
 
-    <h3>{{'DASHBOARD.RECOMMENDATIONS' | translate}}</h3>
-    <div owl-carousel="vm.recommendations" owl-options="vm.carouselOptions">
-      <streama-media-item item="item"></streama-media-item>
-    </div>
+   <div ng-show="vm.recommendations.length">
+     <h3>{{'DASHBOARD.RECOMMENDATIONS' | translate}}</h3>
+     <div owl-carousel="vm.recommendations" owl-options="vm.carouselOptions">
+       <streama-media-item item="item"></streama-media-item>
+     </div>
+   </div>
 
     <h3>{{'DASHBOARD.DISCOVER_SHOWS' | translate}}</h3>
     <div owl-carousel="vm.shows" owl-options="vm.carouselOptions">

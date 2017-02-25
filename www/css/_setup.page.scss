@@ -3,6 +3,10 @@
     padding-bottom: 40px;
   }
 
+  .swiper-pagination{
+    display: none;
+  }
+
   .setup-slide-content{
     @include flexbox;
     @include flex-direction(column);

@@ -11,7 +11,7 @@ angular.module('streama', [
 	//streama modules
 	'streama.setup', 'streama.core', 'streama.dash', 'angular-owl-carousel', 'streama.translations'])
 
-  .run(function($ionicPlatform, $rootScope) {
+  .run(function($ionicPlatform, $rootScope, apiService, $state) {
     $ionicPlatform.ready(function() {
       // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
       // for form inputs)
@@ -27,6 +27,11 @@ angular.module('streama', [
 
 
 			$rootScope.navLogo = '<img class="title-image" src="img/logo.png" />';
+      $rootScope.logout = function () {
+				apiService.core.logout().then(function () {
+					$state.go('setup');
+				});
+			};
     });
   })
 

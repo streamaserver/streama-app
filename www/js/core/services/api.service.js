@@ -1,5 +1,5 @@
 angular.module('streama.core')
-	.service('apiService', function ($http, localStorageService) {
+	.service('apiService', function ($http, localStorageService, $q) {
 		var basePath = localStorageService.get('streamaDomain');
 		var apiBase = 'api/v1/';
 		return{
@@ -16,7 +16,18 @@ angular.module('streama.core')
 					});
 				},
 				logout: function () {
-					return $http.post(basePath + 'logoff');
+					var deferred = $q.defer();
+					$http.post(basePath + 'logoff').then(onLogoff, onLogoff);
+
+					function onLogoff() {
+						$http.get(basePath + apiBase + 'currentUser').then(function (data) {
+							if(!_.get(data, 'id')){
+								deferred.resolve();
+							}
+						})
+					}
+
+					return deferred.promise;
 				},
 				currentUser: function () {
 					return $http.get(basePath + apiBase + 'currentUser');
@@ -26,6 +37,9 @@ angular.module('streama.core')
 
 			setup: {
 				validateDomain: function (domain) {
+					if(!_.endsWith(domain, '/')){
+						domain += '/'
+					}
 					return $http.get(domain + apiBase + 'validateDomain');
 				},
 				saveDomain: function (domain) {

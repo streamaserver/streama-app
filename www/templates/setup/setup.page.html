@@ -1,7 +1,7 @@
 <ion-content scroll="false" class="setup-page">
   <ion-slides  options="vm.sliderOptions" slider="data.slider">
 
-    <ion-slide-page class="setup-slide-content slide-welcome" ng-if="!vm.isAlreadySetUp">
+    <ion-slide-page class="setup-slide-content slide-welcome">
       <div class="setup-logo-wrapper setup-slide-content-push">
         <img src="img/logo.png" alt="streama" class="setup-logo">
       </div>
@@ -12,7 +12,7 @@
     </ion-slide-page>
 
 
-    <ion-slide-page class="setup-slide-content" ng-if="!vm.isAlreadySetUp">
+    <ion-slide-page class="setup-slide-content">
 
       <h2>Installation Setup</h2>
 
@@ -53,6 +53,12 @@
       </div>
 
       <div class="setup-slide-content-push">
+
+
+        <button ng-click="vm.proceedToSlide(1)" class="button button-light button-outline button-small pull-right">
+          Change Connection
+        </button>
+
         <div class="setup-installation-wrapper">
           <h5>Connecting to: <strong>{{ vm.setup.domain }}</strong></h5>
 
