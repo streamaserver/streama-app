@@ -1,4 +1,12 @@
-<ion-view title="{{$root.navLogo}}" class="dash" right-buttons="bla">
+<ion-view title="Dashboard" class="dash">
+  <ion-nav-title>
+    <img src="img/logo.png" alt="Streama">
+  </ion-nav-title>
+  <ion-nav-buttons side="right">
+    <button class="button button-icon button-clear ion-ios-search" ng-click="$root.toggleSearch()">
+    </button>
+  </ion-nav-buttons>
+
   <ion-content class="dashboard">
 
     <div ng-if="vm.newReleases.length" class="new-releases-slider">
@@ -9,7 +17,7 @@
           <div class="new-releases-slide">
             <img class="poster-image" ng-src="https://image.tmdb.org/t/p/w342/{{item.media.poster_path}}" class="pull-left">
             <div class="image-background" style="background-image: url('https://image.tmdb.org/t/p/w1280/{{item.media.backdrop_path}}')">
-              <i class="info-icon ion-ios-information" ng-click="showDetails(item.media)"></i>
+              <i class="info-icon ion-ios-information" ui-sref="main.mediaDetail({mediaId: item.media.id, mediaType: item.media.mediaType})"></i>
               <div class="new-release-footer">
                 <a class="play-icon ion-ios-play" ui-sref="player({videoId: item.videoToPlayId})"></a>
                 <div class="new-releases-description">

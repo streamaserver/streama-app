@@ -9,7 +9,7 @@ angular.module('streama', [
 	'ionic', 'ionic.cloud', 'LocalStorageModule',
 
 	//streama modules
-	'streama.setup', 'streama.core', 'streama.dash', 'angular-owl-carousel', 'streama.translations'])
+	'streama.setup', 'streama.core', 'streama.dash', 'streama.translations', 'streama.player', 'streama.videoPlayer'])
 
 
 	.config(function($ionicCloudProvider, $httpProvider) {

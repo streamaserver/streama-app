@@ -4,6 +4,10 @@ angular.module('streama.core')
 		var apiBase = 'api/v1/';
 		return{
 
+			getBasePath: function () {
+				return basePath;
+			},
+
 			core: {
 				login: function (data) {
 					return $http({
@@ -69,6 +73,17 @@ angular.module('streama.core')
 				},
 				listRecommendations: function (params) {
 					return $http.get(basePath + apiBase + 'dash/listRecommendations');
+				},
+				mediaDetail: function (params) {
+					return $http.get(basePath + apiBase + 'dash/mediaDetail', {params: params});
+				}
+			},
+
+
+
+			player: {
+				video: function (videoId) {
+					return $http.get(basePath + apiBase + 'player/video/' + videoId);
 				}
 			}
 		}

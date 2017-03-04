@@ -29,6 +29,32 @@ angular.module('streama').config(function($stateProvider, $urlRouterProvider) {
 		}
   })
 
+  .state('main.mediaDetail', {
+    url: '/dash/:mediaType/:mediaId',
+		resolve: {
+			currentUser: currentUserResolve
+		},
+		views: {
+			'content': {
+				templateUrl: 'templates/dash/dash.mediaDetail.page.html',
+				controller: 'MediaDetailCtrl as vm'
+			}
+		}
+  })
+
+  .state('main.player', {
+    url: '/player/:videoId?currentTime?sessionId',
+		resolve: {
+			currentUser: currentUserResolve
+		},
+		views: {
+			'content': {
+				templateUrl: 'templates/player/player.page.html',
+				controller: 'PlayerCtrl as vm'
+			}
+		}
+  })
+
   // .state('app.search', {
   //   url: '/search',
   //   views: {

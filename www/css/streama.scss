@@ -2,12 +2,15 @@
 @import "mixins";
 
 @import "core";
+@import "alertify";
 @import "btn";
 @import "misc";
 @import "util";
+@import "genre";
 @import "media-display";
 @import "media-continue-watching-item";
 @import "media-poster-item";
+@import "media-detail";
 
 @import "profile.page";
 @import "setup.page";

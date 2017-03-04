@@ -1,0 +1,86 @@
+<ion-view class="media-detail">
+
+  <ion-content>
+
+    <div class="row">
+      <div class="col col-25">
+        <img class="media-detail-poster" ng-show="vm.media.poster_path" ng-src="https://image.tmdb.org/t/p/w300/{{vm.media.poster_path}}"/>
+        <img class="media-detail-poster" ng-show="vm.media.manualInput && vm.media.poster_image_src" ng-src="{{vm.media.poster_image_src}}"/>
+      </div>
+      <div class="col">
+        <h2> {{vm.media.name || vm.media.title}}</h2>
+        <ul class="info-list">
+          <li><strong>{{'VIDEO.RELEASED' | translate}}: </strong> {{vm.media.release_date.substring(0,4) || vm.media.first_air_date.substring(0,4)}}</li>
+          <li><strong>{{'VIDEO.IMDB' | translate}}: </strong>
+            <a target="_blank" href="http://www.imdb.com/title/{{vm.media.imdb_id}}">{{vm.media.name || vm.media.title}}</a>
+          </li>
+          <li><strong>{{'VIDEO.RATING' | translate}}: </strong>
+            {{vm.media.vote_average}}/10 ({{vm.media.vote_count}} {{'VIDEO.VOTES' | translate}})
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="media-detail-play-wrapper">
+      <a class="icon-play ion-android-arrow-dropright" ui-sref="main.player({videoId: (firstEpisode.id || vm.media.id)})"></a>
+    </div>
+
+
+    <div class="spinner big" ng-show="!vm.media">
+      <div class="bounce1"></div>
+      <div class="bounce2"></div>
+      <div class="bounce3"></div>
+    </div>
+
+
+
+
+    <div style="padding: 8px;">
+      <h4>{{'VIDEO.OVERVIEW' | translate}}</h4>
+      <p class="overview-text">{{vm.media.overview}}</p>
+
+
+      <h4>{{'VIDEO.GENRE' | translate}}</h4>
+      <ul class="genre-list">
+        <li class="genre-tag interactive" ng-repeat="genre in vm.media.genre" ui-sref="dash({genreId: genre.id})">
+          {{genre.name}}
+        </li>
+      </ul>
+
+      <div ng-if="vm.media.trailerKey">
+        <h4>{{'VIDEO.TRAILER' | translate}}</h4>
+        <iframe width="560" height="315" ng-src="{{'https://www.youtube.com/embed/'+vm.media.trailerKey+'?rel=0' | trustResourceUrl}}"
+                frameborder="0" allowfullscreen></iframe>
+      </div>
+
+      <hr>
+
+      <div class="season-picker-list">
+    <span class="season-picker-item" ng-class="{'active': currentSeason == season}" ng-click="setCurrentSeason(season)"
+          ng-repeat="(season, episodes) in seasons | orderBy:'season'">
+      {{'VIDEO.SEASON' | translate}} {{season}}
+    </span>
+      </div>
+
+      <div class="media-list">
+        <div class="media-list-item episode-wrapper" ng-repeat="episode in seasons[currentSeason] | orderBy:'episode_number'"
+             ng-class="{'no-files': !episode.hasFile}">
+          <h3 class="media-episode-string">
+            <span ng-show="episode.episodeString">{{episode.episodeString}}</span>
+            <span ng-show="!episode.episodeString">s{{episode.season_number | padnumber:2}}e{{episode.episode_number | padnumber:2}}</span>
+          </h3>
+          <h3 class="media-title">{{episode.name}}</h3>
+          <div class="media-item" >
+            <img ng-if="episode.still_path" ng-src="https://image.tmdb.org/t/p/w300/{{episode.still_path}}"/>
+            <div ng-if="!episode.still_path" class="fallback-image"></div>
+            <a ng-show="episode.hasFile" ui-sref="player({videoId: episode.id})" class="play-icon ion-ios-play"></a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+
+  </ion-content>
+</ion-view>
