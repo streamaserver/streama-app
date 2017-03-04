@@ -3,15 +3,17 @@
 angular.module('streama.player').controller('PlayerCtrl', [
 	'$scope', 'apiService', '$stateParams', 'playerService', '$rootScope',
 	function ($scope, apiService, $stateParams, playerService, $rootScope) {
+		var vm = this;
+		console.log('%c init streama player ctrl', 'color: deeppink; font-weight: bold; text-shadow: 0 0 5px deeppink;');
 
 		apiService.player.video($stateParams.videoId).success(function (data) {
-			$scope.video = data;
+			vm.video = data;
 
-			var missingFileError = playerService.handleMissingFileError($scope.video);
-			var wrongBasePathError = playerService.handleWrongBasepathError($scope.video);
+			var missingFileError = playerService.handleMissingFileError(vm.video);
+			var wrongBasePathError = playerService.handleWrongBasepathError(vm.video);
 
 			if(!missingFileError && !wrongBasePathError){
-				$scope.videoOptions = playerService.setVideoOptions($scope.video);
+				vm.videoOptions = playerService.setVideoOptions(vm.video);
 			}
 
 			playerService.registerSocketListener();

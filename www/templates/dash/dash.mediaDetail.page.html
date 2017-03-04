@@ -3,9 +3,12 @@
   <ion-content>
 
     <div class="row">
-      <div class="col col-25">
+      <div class="col col-25" ng-if="vm.media.mediaType != 'episode'">
         <img class="media-detail-poster" ng-show="vm.media.poster_path" ng-src="https://image.tmdb.org/t/p/w300/{{vm.media.poster_path}}"/>
         <img class="media-detail-poster" ng-show="vm.media.manualInput && vm.media.poster_image_src" ng-src="{{vm.media.poster_image_src}}"/>
+      </div>
+      <div class="col col-50" ng-if="vm.media.mediaType == 'episode'">
+        <img class="media-detail-poster" ng-show="vm.media.backdrop_path" ng-src="https://image.tmdb.org/t/p/w1280/{{vm.media.backdrop_path}}"/>
       </div>
       <div class="col">
         <h2> {{vm.media.name || vm.media.title}}</h2>
@@ -22,7 +25,7 @@
     </div>
 
     <div class="media-detail-play-wrapper">
-      <a class="icon-play ion-android-arrow-dropright" ui-sref="main.player({videoId: (firstEpisode.id || vm.media.id)})"></a>
+      <a class="icon-play ion-android-arrow-dropright" ui-sref="player({videoId: (firstEpisode.id || vm.media.id)})" ui-sref-opts="{reload: true, notify: true}"></a>
     </div>
 
 

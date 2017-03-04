@@ -144,16 +144,7 @@ angular.module('streama.player').factory('playerService',
 
         if($state.current.name == 'player'){
           alertify.alert($filter('translate')('MESSAGES.' + errorCode), function () {
-            if($rootScope.currentUser.authorities.length){
-              if(videoData.show){
-                $state.go('admin.show', {showId: videoData.show.id});
-              }else{
-                $state.go('admin.movie', {movieId: videoData.id});
-              }
-            }else{
-              $state.go('dash', {});
-            }
-
+						$state.go('main.dash', {})
           });
         }
       },
@@ -184,16 +175,7 @@ angular.module('streama.player').factory('playerService',
         if(!video.files || !video.files.length){
           hasError = true;
           alertify.alert($filter('translate')('MESSAGES.FILE_MISSING'), function () {
-            if($rootScope.currentUser.authorities.length){
-              if(video.show){
-                $state.go('admin.show', {showId: video.show.id});
-              }else{
-                $state.go('admin.movie', {movieId: video.id});
-              }
-            }else{
-              $state.go('dash', {});
-            }
-
+						$state.go('main.dash', {})
           });
         }
 
@@ -202,19 +184,14 @@ angular.module('streama.player').factory('playerService',
 
       handleWrongBasepathError: function (video) {
         var hasError = false;
-        var videoSource = video.files[0].src;
-        var externalLink = video.files[0].externalLink;
+        var videoSource = _.get(video, 'files[0].src');
+        var externalLink = _.get(video, 'files[0].externalLink');
         var basePath = location.origin + apiService.getBasePath();
 
         if(videoSource && videoSource.indexOf(basePath) == -1 && !externalLink){
           hasError = true;
           alertify.alert($filter('translate')('MESSAGES.WRONG_BASEPATH', {basePath: basePath}), function () {
-            if(_.find($rootScope.currentUser.authorities, {authority: "ROLE_ADMIN"})){
-              $state.go('settings.settings');
-            }else{
-              $state.go('dash', {});
-            }
-
+						$state.go('main.dash', {})
           });
         }
         return hasError;

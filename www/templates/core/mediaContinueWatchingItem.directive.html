@@ -4,7 +4,7 @@
     <img ng-if="item.video.backdrop_path" ng-src="https://image.tmdb.org/t/p/w1280/{{item.video.backdrop_path}}"/>
     <img ng-if="!item.video.backdrop_path" ng-src="img/poster-not-found.png"/>
 
-    <a class="play-icon ion-ios-play"></a>
+    <a class="play-icon ion-ios-play" ui-sref="player({videoId: item.video.id})" ui-sref-opts="{reload: true, notify: true}"></a>
   </div>
 
   <div class="media-progress-wrapper">
@@ -22,8 +22,8 @@
           <div class="progress-inner" style="width: {{item.currentPlayTime / item.runtime * 100}}%;"></div>
         </div>
       </div>
-      <div class="continue-watching-info" ng-click="showDetails($event, item.video)">
-        <i class="ion-ios-information-outline"></i>
+      <div class="continue-watching-info" ui-sref="main.mediaDetail({mediaId: item.video.id, mediaType: item.video.mediaType})">
+        <i class="ion-ios-information-outline" ></i>
       </div>
     </div>
   </div>

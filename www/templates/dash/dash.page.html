@@ -19,7 +19,7 @@
             <div class="image-background" style="background-image: url('https://image.tmdb.org/t/p/w1280/{{item.media.backdrop_path}}')">
               <i class="info-icon ion-ios-information" ui-sref="main.mediaDetail({mediaId: item.media.id, mediaType: item.media.mediaType})"></i>
               <div class="new-release-footer">
-                <a class="play-icon ion-ios-play" ui-sref="player({videoId: item.videoToPlayId})"></a>
+                <a class="play-icon ion-ios-play" ui-sref="player({videoId: item.videoToPlayId})" ui-sref-opts="{reload: true, notify: true}"></a>
                 <div class="new-releases-description">
                   <h3>
                     {{item.media.title || item.media.name}}

@@ -42,61 +42,22 @@ angular.module('streama').config(function($stateProvider, $urlRouterProvider) {
 		}
   })
 
-  .state('main.player', {
-    url: '/player/:videoId?currentTime?sessionId',
+  .state('player', {
+    url: '/player/:videoId',
 		resolve: {
 			currentUser: currentUserResolve
 		},
-		views: {
-			'content': {
-				templateUrl: 'templates/player/player.page.html',
-				controller: 'PlayerCtrl as vm'
-			}
-		}
+
+		templateUrl: 'templates/player/player.page.html',
+		controller: 'PlayerCtrl as vm'
   })
 
-  // .state('app.search', {
-  //   url: '/search',
-  //   views: {
-  //     'menuContent': {
-  //       templateUrl: 'templates/search.html'
-  //     }
-  //   }
-  // })
-
-  // .state('app.browse', {
-  //     url: '/browse',
-  //     views: {
-  //       'menuContent': {
-  //         templateUrl: 'templates/browse.html'
-  //       }
-  //     }
-  //   })
-  //   .state('app.playlists', {
-  //     url: '/playlists',
-  //     views: {
-  //       'menuContent': {
-  //         templateUrl: 'templates/playlists.html',
-  //         controller: 'PlaylistsCtrl'
-  //       }
-  //     }
-  //   })
-	//
-  // .state('app.single', {
-  //   url: '/playlists/:playlistId',
-  //   views: {
-  //     'menuContent': {
-  //       templateUrl: 'templates/playlist.html',
-  //       controller: 'PlaylistCtrl'
-  //     }
-  //   }
-  // });
-  // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/setup');
 });
 
 
 function currentUserResolve(apiService, $state) {
+	console.log('%c currentUserResolve for ' + $state.current.name, 'color: deeppink; font-weight: bold; text-shadow: 0 0 5px deeppink;');
   return apiService.core.currentUser().then(function (response) {
     if(!response.data.id){
       $state.go('setup');
