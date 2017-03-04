@@ -44,15 +44,15 @@ angular.module('streama').config(function($stateProvider, $urlRouterProvider) {
 
   .state('player', {
     url: '/player/:videoId',
-		resolve: {
-			currentUser: currentUserResolve
-		},
-
+		// resolve: {
+		// 	currentUser: currentUserResolve
+		// },
+		cache: false,
 		templateUrl: 'templates/player/player.page.html',
 		controller: 'PlayerCtrl as vm'
   })
 
-  $urlRouterProvider.otherwise('/setup');
+  // $urlRouterProvider.otherwise('/main.dash');
 });
 
 
