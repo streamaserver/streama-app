@@ -3,7 +3,7 @@
  */
 
 angular.module('streama.core')
-	.directive('streamaMediaItem', function () {
+	.directive('streamaMediaItem', function ($state) {
 		return {
 			restrict: 'AE',
 			scope: {
@@ -33,7 +33,7 @@ angular.module('streama.core')
 					return result;
 				}
 				function showDetails() {
-					console.log('%c showDetails', 'color: deeppink; font-weight: bold; text-shadow: 0 0 5px deeppink;');
+					$state.go('main.mediaDetail', {mediaId: $scope.item.id, mediaType: $scope.item.mediaType});
 				}
 			}
 		}
