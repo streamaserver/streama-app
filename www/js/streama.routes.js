@@ -52,7 +52,7 @@ angular.module('streama').config(function($stateProvider, $urlRouterProvider) {
 		controller: 'PlayerCtrl as vm'
   })
 
-  // $urlRouterProvider.otherwise('/main.dash');
+  $urlRouterProvider.otherwise('/setup');
 });
 
 
