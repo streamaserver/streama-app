@@ -8,11 +8,11 @@
     <div class="volume-info" ng-show="currentTimeChanged">
       <br>
       <strong ng-show="currentTime">
-        <span ng-if="currentTime >= 3600">{{currentTime | secondsToDateTime | date:'hh:mm:ss'}}</span>
-        <span ng-if="currentTime < 3600">{{currentTime | secondsToDateTime | date:'mm:ss'}}</span>
+        <span ng-if="currentTime >= 3600">{{currentTime | streamaSecondsToDateTime | date:'hh:mm:ss'}}</span>
+        <span ng-if="currentTime < 3600">{{currentTime | streamaSecondsToDateTime | date:'mm:ss'}}</span>
       </strong>
-      <span ng-if="videoDuration >= 3600">{{videoDuration | secondsToDateTime | date:'hh:mm:ss'}}</span>
-      <span ng-if="videoDuration < 3600">{{videoDuration | secondsToDateTime | date:'mm:ss'}}</span>
+      <span ng-if="videoDuration >= 3600">{{videoDuration | streamaSecondsToDateTime | date:'hh:mm:ss'}}</span>
+      <span ng-if="videoDuration < 3600">{{videoDuration | streamaSecondsToDateTime | date:'mm:ss'}}</span>
     </div>
   </div>
 
