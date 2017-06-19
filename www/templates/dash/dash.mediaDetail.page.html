@@ -58,28 +58,27 @@
 
       <hr>
 
+
+
       <div class="season-picker-list">
-    <span class="season-picker-item" ng-class="{'active': currentSeason == season}" ng-click="setCurrentSeason(season)"
-          ng-repeat="(season, episodes) in seasons | orderBy:'season'">
-      {{'VIDEO.SEASON' | translate}} {{season}}
-    </span>
+          <div class="season-picker-item" ng-class="{'active': vm.currentSeason == season}" ng-click="vm.setCurrentSeason(season)"
+                ng-repeat="(season, episodes) in vm.seasons">
+            {{'VIDEO.SEASON' | translate}} {{season}}
+          </div>
       </div>
 
-      <div class="media-list">
-        <div class="media-list-item episode-wrapper" ng-repeat="episode in seasons[currentSeason] | orderBy:'episode_number'"
-             ng-class="{'no-files': !episode.hasFile}">
-          <h3 class="media-episode-string">
-            <span ng-show="episode.episodeString">{{episode.episodeString}}</span>
-            <span ng-show="!episode.episodeString">s{{episode.season_number | padnumber:2}}e{{episode.episode_number | padnumber:2}}</span>
-          </h3>
-          <h3 class="media-title">{{episode.name}}</h3>
-          <div class="media-item" >
-            <img ng-if="episode.still_path" ng-src="https://image.tmdb.org/t/p/w300/{{episode.still_path}}"/>
-            <div ng-if="!episode.still_path" class="fallback-image"></div>
-            <a ng-show="episode.hasFile" ui-sref="player({videoId: episode.id})" class="play-icon ion-ios-play"></a>
-          </div>
+      <div class="row media-detail-episode-item" ng-repeat="episode in vm.seasons[vm.currentSeason] | orderBy:'episode_number'">
+        <div class="col col-25">
+          <img ng-if="episode.still_path" ng-src="https://image.tmdb.org/t/p/w300/{{episode.still_path}}"/>
+          <div ng-if="!episode.still_path" class="fallback-image"></div>
         </div>
-
+        <div class="col">
+          <h3 class="media-title"><span ng-show="episode.episodeString">{{episode.episodeString}}</span> {{episode.name}}</h3>
+          <p>{{episode.overview}}</p>
+        </div>
+        <div class="text-center">
+          <a ui-sref="player({videoId: episode.id})" class="play-icon ion-ios-play"></a>
+        </div>
       </div>
     </div>
 

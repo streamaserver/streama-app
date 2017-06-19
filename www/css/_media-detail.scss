@@ -53,3 +53,14 @@
     font-size: 18px;
   }
 }
+
+.media-detail-episode-item{
+  border-bottom: 1px solid #3e3e3e;
+  margin-bottom: 16px;
+
+  .play-icon{
+    display: inline-block;
+    background: transparent;
+    box-shadow: 0px 2px 2px 2px rgba(0, 0, 0, 0.18);
+  }
+}
