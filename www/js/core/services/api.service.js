@@ -76,6 +76,9 @@ angular.module('streama.core')
 				},
 				mediaDetail: function (params) {
 					return $http.get(basePath + apiBase + 'dash/mediaDetail', {params: params});
+				},
+				listEpisodesForShow: function (params) {
+					return $http.get(basePath + apiBase + 'dash/listEpisodesForShow', {params: params});
 				}
 			},
 
