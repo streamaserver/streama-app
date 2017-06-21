@@ -8,7 +8,7 @@
         <img class="media-detail-poster" ng-show="vm.media.manualInput && vm.media.poster_image_src" ng-src="{{vm.media.poster_image_src}}"/>
 
         <div style="margin-top: 16px;"  class="text-center">
-          <a class="icon-play ion-android-arrow-dropright" ui-sref="player({videoId: (firstEpisode.id || vm.media.id)})" ui-sref-opts="{reload: true, notify: true}"></a>
+          <a class="icon-play ion-android-arrow-dropright" ng-click="vm.continueWatching()" ui-sref="player({videoId: (firstEpisode.id || vm.media.id)})" ui-sref-opts="{reload: true, notify: true}"></a>
         </div>
       </div>
       <div class="col col-50" ng-if="vm.media.mediaType == 'episode'">
