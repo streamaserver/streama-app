@@ -25,7 +25,7 @@ angular.module('streama.player').controller('PlayerCtrl', [
 		});
 
 		$rootScope.$on('$stateChangeStart', function(e, toState){
-			if(toState.name != 'player'){
+			if(toState.name !== 'player'){
 				playerService.destroyPlayer();
 			}
 		});
