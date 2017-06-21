@@ -79,6 +79,9 @@ angular.module('streama.core')
 				},
 				listEpisodesForShow: function (params) {
 					return $http.get(basePath + apiBase + 'dash/listEpisodesForShow', {params: params});
+				},
+				cotinueWatching: function (params) {
+					return $http.get(basePath + apiBase + 'dash/cotinueWatching', {params: params});
 				}
 			},
 
