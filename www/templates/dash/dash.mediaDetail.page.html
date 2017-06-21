@@ -3,9 +3,13 @@
   <ion-content>
 
     <div class="row">
-      <div class="col col-25" ng-if="vm.media.mediaType != 'episode'">
+      <div class="col col-33" ng-if="vm.media.mediaType != 'episode'">
         <img class="media-detail-poster" ng-show="vm.media.poster_path" ng-src="https://image.tmdb.org/t/p/w300/{{vm.media.poster_path}}"/>
         <img class="media-detail-poster" ng-show="vm.media.manualInput && vm.media.poster_image_src" ng-src="{{vm.media.poster_image_src}}"/>
+
+        <div style="margin-top: 16px;"  class="text-center">
+          <a class="icon-play ion-android-arrow-dropright" ui-sref="player({videoId: (firstEpisode.id || vm.media.id)})" ui-sref-opts="{reload: true, notify: true}"></a>
+        </div>
       </div>
       <div class="col col-50" ng-if="vm.media.mediaType == 'episode'">
         <img class="media-detail-poster" ng-show="vm.media.backdrop_path" ng-src="https://image.tmdb.org/t/p/w1280/{{vm.media.backdrop_path}}"/>
@@ -21,34 +25,34 @@
             {{vm.media.vote_average}}/10 ({{vm.media.vote_count}} {{'VIDEO.VOTES' | translate}})
           </li>
         </ul>
+
+        <br>
+        <h4>{{'VIDEO.OVERVIEW' | translate}}</h4>
+        <p class="overview-text">{{vm.media.overview}}</p>
+
+        <br>
+        <h4>{{'VIDEO.GENRE' | translate}}</h4>
+        <ul class="genre-list">
+          <li class="genre-tag interactive" ng-repeat="genre in vm.media.genre" ui-sref="dash({genreId: genre.id})">
+            {{genre.name}}
+          </li>
+        </ul>
+
+
+        <div class="spinner big" ng-show="!vm.media">
+          <div class="bounce1"></div>
+          <div class="bounce2"></div>
+          <div class="bounce3"></div>
+        </div>
       </div>
-    </div>
-
-    <div class="media-detail-play-wrapper">
-      <a class="icon-play ion-android-arrow-dropright" ui-sref="player({videoId: (firstEpisode.id || vm.media.id)})" ui-sref-opts="{reload: true, notify: true}"></a>
-    </div>
-
-
-    <div class="spinner big" ng-show="!vm.media">
-      <div class="bounce1"></div>
-      <div class="bounce2"></div>
-      <div class="bounce3"></div>
     </div>
 
 
 
 
     <div style="padding: 8px;">
-      <h4>{{'VIDEO.OVERVIEW' | translate}}</h4>
-      <p class="overview-text">{{vm.media.overview}}</p>
 
 
-      <h4>{{'VIDEO.GENRE' | translate}}</h4>
-      <ul class="genre-list">
-        <li class="genre-tag interactive" ng-repeat="genre in vm.media.genre" ui-sref="dash({genreId: genre.id})">
-          {{genre.name}}
-        </li>
-      </ul>
 
       <div ng-if="vm.media.trailerKey">
         <h4>{{'VIDEO.TRAILER' | translate}}</h4>
@@ -61,6 +65,7 @@
 
 
       <div class="season-picker-list">
+        <h4>{{'VIDEO.EPISODES' | translate}}</h4>
           <div class="season-picker-item" ng-class="{'active': vm.currentSeason == season}" ng-click="vm.setCurrentSeason(season)"
                 ng-repeat="(season, episodes) in vm.seasons">
             {{'VIDEO.SEASON' | translate}} {{season}}
@@ -68,17 +73,19 @@
       </div>
 
       <div class="row media-detail-episode-item" ng-repeat="episode in vm.seasons[vm.currentSeason] | orderBy:'episode_number'">
-        <div class="col col-25">
+        <div class="col col-33">
           <img ng-if="episode.still_path" ng-src="https://image.tmdb.org/t/p/w300/{{episode.still_path}}"/>
           <div ng-if="!episode.still_path" class="fallback-image"></div>
+
+          <div class="text-center">
+            <a ui-sref="player({videoId: episode.id})" class="play-icon ion-ios-play"></a>
+          </div>
         </div>
         <div class="col">
           <h3 class="media-title"><span ng-show="episode.episodeString">{{episode.episodeString}}</span> {{episode.name}}</h3>
           <p>{{episode.overview}}</p>
         </div>
-        <div class="text-center">
-          <a ui-sref="player({videoId: episode.id})" class="play-icon ion-ios-play"></a>
-        </div>
+
       </div>
     </div>
 
