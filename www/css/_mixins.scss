@@ -104,6 +104,18 @@
   -webkit-order: $val;
   order: $val;
 }
+@mixin flex-wrap($value: nowrap) {
+  // No Webkit Box fallback.
+  -webkit-flex-wrap: $value;
+  -moz-flex-wrap: $value;
+  @if $value == nowrap {
+    -ms-flex-wrap: none;
+  } @else {
+    -ms-flex-wrap: $value;
+  }
+  flex-wrap: $value;
+}
+
 @mixin align-items($val) {
   -webkit-flex-align: $val;
   -ms-flex-align: $val;

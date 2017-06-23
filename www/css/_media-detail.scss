@@ -58,6 +58,18 @@
   border-bottom: 1px solid #3e3e3e;
   margin-bottom: 16px;
 
+  .media-detail-episode-image-wrapper{
+    @include flex-wrap(wrap);
+
+    .media-detail-episode-still{
+      @include flex(1 0 110px);
+    }
+
+    .media-detail-episode-play-button{
+      padding: 8px;
+    }
+
+  }
   .play-icon{
     display: inline-block;
     background: transparent;

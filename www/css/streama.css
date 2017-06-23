@@ -1014,6 +1014,19 @@ a {
 .media-detail-episode-item {
   border-bottom: 1px solid #3e3e3e;
   margin-bottom: 16px; }
+  .media-detail-episode-item .media-detail-episode-image-wrapper {
+    -webkit-flex-wrap: wrap;
+    -moz-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap; }
+    .media-detail-episode-item .media-detail-episode-image-wrapper .media-detail-episode-still {
+      -webkit-box-flex: 1 0 110px;
+      -moz-box-flex: 1 0 110px;
+      -webkit-flex: 1 0 110px;
+      -ms-flex: 1 0 110px;
+      flex: 1 0 110px; }
+    .media-detail-episode-item .media-detail-episode-image-wrapper .media-detail-episode-play-button {
+      padding: 8px; }
   .media-detail-episode-item .play-icon {
     display: inline-block;
     background: transparent;

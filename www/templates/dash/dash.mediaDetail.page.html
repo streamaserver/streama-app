@@ -74,11 +74,15 @@
 
       <div class="row media-detail-episode-item" ng-repeat="episode in vm.seasons[vm.currentSeason] | orderBy:'episode_number'">
         <div class="col col-33">
-          <img ng-if="episode.still_path" ng-src="https://image.tmdb.org/t/p/w300/{{episode.still_path}}"/>
-          <div ng-if="!episode.still_path" class="fallback-image"></div>
+          <div class="row media-detail-episode-image-wrapper">
+            <div class="media-detail-episode-still">
+              <img ng-if="episode.still_path" ng-src="https://image.tmdb.org/t/p/w300/{{episode.still_path}}"/>
+              <div ng-if="!episode.still_path" class="fallback-image"></div>
+            </div>
 
-          <div class="text-center">
-            <a ui-sref="player({videoId: episode.id})" class="play-icon ion-ios-play"></a>
+            <div class="media-detail-episode-play-button text-center">
+              <a ui-sref="player({videoId: episode.id})" class="play-icon ion-ios-play"></a>
+            </div>
           </div>
         </div>
         <div class="col">
