@@ -9,8 +9,8 @@ angular.module('streama.player').controller('PlayerCtrl', [
 		apiService.player.video($stateParams.videoId).success(function (data) {
 			vm.video = data;
 
-			var missingFileError = playerService.handleMissingFileError(vm.video);
-			var wrongBasePathError = playerService.handleWrongBasepathError(vm.video);
+			// var missingFileError = playerService.handleMissingFileError(vm.video);
+			// var wrongBasePathError = playerService.handleWrongBasepathError(vm.video);
 
 			if(data.mediaType === 'episode' && data.show){
 				apiService.dash.listEpisodesForShow({id: data.show.id}).success(function (episodes) {
