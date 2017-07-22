@@ -1,4 +1,8 @@
 {
   "name": "streama",
-  "app_id": "d4060c17"
+  "app_id": "d4060c17",
+  "type": "ionic1",
+  "watchPatterns": [
+    "scss/**/*"
+  ]
 }
