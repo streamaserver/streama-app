@@ -90,6 +90,9 @@ angular.module('streama.core')
 			player: {
 				video: function (videoId) {
 					return $http.get(basePath + apiBase + 'player/video/' + videoId);
+				},
+				updateViewingStatus: function (params) {
+					return $http.get(basePath + apiBase + 'player/updateViewingStatus', {params: params});
 				}
 			}
 		}
