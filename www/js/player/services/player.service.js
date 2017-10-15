@@ -29,21 +29,14 @@ angular.module('streama.player').factory('playerService',
      * @param video
      * @returns {{}}
      */
-    function setVideoOptions(video) {
+    function setVideoOptions(video, episodes) {
 
       var videoOptions = {};
 
       videoOptions.videoSrc = _.get(video, 'files[0].src');
       videoOptions.isExternalLink = true;
       videoOptions.videoMetaTitle = _.get(video, 'title') || _.get(video, 'episodeString') + ' ' + _.get(video, 'name');
-      videoOptions.episodeList = {
-        1: [
-          {id: 1, name: 'Pilot', season_number: 1, episode_number:1, episodeString: 's01e01', still_path: 'https://image.tmdb.org/t/p/original/ydlY3iPfeOAvu8gVqrxPoMvzNCn.jpg', overview: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.', videoDuration: 1320},
-          {id: 2, name: 'The Cat\'s in the Bag', season_number: 1, episode_number:2, episodeString: 's01e02', still_path: 'https://image.tmdb.org/t/p/original/tjDNvbokPLtEnpFyFPyXMOd6Zr1.jpg', overview: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.', videoDuration: 1320},
-          {id: 3, name: '...and the Bag\'s in the River', season_number: 1, episode_number:3, episodeString: 's01e03', still_path: 'https://image.tmdb.org/t/p/original/2kBeBlxGqBOdWlKwzAxiwkfU5on.jpg', overview: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.', videoDuration: 1320},
-          {id: 3, name: '...and the Bag\'s in the River', season_number: 1, episode_number:3, episodeString: 's01e03', still_path: 'https://image.tmdb.org/t/p/original/2kBeBlxGqBOdWlKwzAxiwkfU5on.jpg', overview: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.', videoDuration: 1320}
-        ]
-      };
+      videoOptions.episodeList = _.groupBy(episodes, 'season_number');
 
       videoOptions.showEpisodeBrowser = true;
       videoOptions.currentEpisode = {
