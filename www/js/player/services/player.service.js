@@ -24,7 +24,11 @@ angular.module('streama.player').factory('playerService',
       onVideoClick: onNext
     };
 
-
+    /**
+     *
+     * @param video
+     * @returns {{}}
+     */
     function setVideoOptions(video) {
 
       var videoOptions = {};
@@ -116,6 +120,11 @@ angular.module('streama.player').factory('playerService',
     }
 
 
+    /**
+     *
+     * @param videoElement
+     * @param socketData
+     */
     function onVideoPlay(videoElement, socketData) {
       var that = this;
       console.log('%c onVideoPlay', 'color: deeppink; font-weight: bold; text-shadow: 0 0 5px deeppink;');
@@ -136,7 +145,11 @@ angular.module('streama.player').factory('playerService',
     }
 
 
-
+    /**
+     *
+     * @param videoElement
+     * @param socketData
+     */
     function onVideoPause(videoElement, socketData) {
       console.log('%c onVideoPause', 'color: deeppink; font-weight: bold; text-shadow: 0 0 5px deeppink;', socketData);
       var that = this;
@@ -155,6 +168,9 @@ angular.module('streama.player').factory('playerService',
       }
     }
 
+    /**
+     *
+     */
     function onVideoClose() {
       console.log('%c onVideoClose', 'color: deeppink; font-weight: bold; text-shadow: 0 0 5px deeppink;');
       var that = this;
@@ -162,6 +178,10 @@ angular.module('streama.player').factory('playerService',
     }
 
 
+    /**
+     *
+     * @param errorCode
+     */
     function onVideoError(errorCode) {
       var that = this;
       errorCode = errorCode || 'CODEC_PROBLEM';
@@ -175,6 +195,11 @@ angular.module('streama.player').factory('playerService',
     }
 
 
+    /**
+     *
+     * @param slider
+     * @param duration
+     */
     function onVideoTimeChange(slider, duration) {
       var params = {videoId: videoData.id, currentTime: slider.value, runtime: duration};
       apiService.player.updateViewingStatus(params);
@@ -186,6 +211,9 @@ angular.module('streama.player').factory('playerService',
     }
 
 
+    /**
+     *
+     */
     function onSocketSessionCreate() {
       alertify.set({ buttonReverse: true, labels: {ok: "OK", cancel : "Cancel"}});
       alertify.confirm($filter('translate')('MESSAGES.SHARE_SOCKET'), function (confirmed) {
@@ -197,6 +225,11 @@ angular.module('streama.player').factory('playerService',
     }
 
 
+    /**
+     *
+     * @param video
+     * @returns {boolean}
+     */
     function handleMissingFileError(video) {
       var hasError = false;
 
@@ -211,6 +244,11 @@ angular.module('streama.player').factory('playerService',
     }
 
 
+    /**
+     *
+     * @param video
+     * @returns {boolean}
+     */
     function handleWrongBasepathError(video) {
       var hasError = false;
       var videoSource = _.get(video, 'files[0].src');
@@ -227,6 +265,9 @@ angular.module('streama.player').factory('playerService',
     }
 
 
+    /**
+     *
+     */
     function destroyPlayer() {
       console.log('%c $stateChangeSuccess', 'color: deeppink; font-weight: bold; text-shadow: 0 0 5px deeppink;');
       var that = this;
@@ -235,6 +276,10 @@ angular.module('streama.player').factory('playerService',
     }
 
 
+    /**
+     *
+     * @param data
+     */
     function handleSocketEvent(data) {
       if(data.browserSocketUUID != websocketService.browserSocketUUID){
         console.log('%c handleSocketEvent', 'color: deeppink; font-weight: bold; text-shadow: 0 0 5px deeppink;');
@@ -253,6 +298,9 @@ angular.module('streama.player').factory('playerService',
     }
 
 
+    /**
+     *
+     */
     function registerSocketListener() {
       if($stateParams.sessionId){
         websocketService.registerPlayerSessonListener($stateParams.sessionId);
@@ -260,11 +308,16 @@ angular.module('streama.player').factory('playerService',
     }
 
 
+    /**
+     *
+     */
     function onNext() {
       $state.go('player', {videoId: videoData.nextEpisode.id});
     }
 
-
+    /**
+     *
+     */
     function onNext() {
       if($rootScope.currentUser.pauseVideoOnClick){
         $rootScope.$broadcast('triggerVideoToggle');
