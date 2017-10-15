@@ -21,7 +21,7 @@ angular.module('streama.player').factory('playerService',
       destroyPlayer: destroyPlayer,
       handleSocketEvent: handleSocketEvent,
       onNext: onNext,
-      onVideoClick: onNext
+      onVideoClick: onVideoClick
     };
 
     /**
@@ -311,7 +311,7 @@ angular.module('streama.player').factory('playerService',
     /**
      *
      */
-    function onNext() {
+    function onVideoClick() {
       if($rootScope.currentUser.pauseVideoOnClick){
         $rootScope.$broadcast('triggerVideoToggle');
       }
