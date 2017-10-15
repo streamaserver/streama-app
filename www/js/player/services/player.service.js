@@ -21,7 +21,8 @@ angular.module('streama.player').factory('playerService',
       destroyPlayer: destroyPlayer,
       handleSocketEvent: handleSocketEvent,
       onNext: onNext,
-      onVideoClick: onVideoClick
+      onVideoClick: onVideoClick,
+      onEpisodeChange: onEpisodeChange
     };
 
     /**
@@ -56,6 +57,17 @@ angular.module('streama.player').factory('playerService',
 
       console.log('%c videoOptions', 'color: deeppink; font-weight: bold; text-shadow: 0 0 5px deeppink;', videoOptions);
       videoData = video;
+
+      videoOptions.onPlay = this.onVideoPlay.bind(videoOptions);
+      videoOptions.onPause = this.onVideoPause.bind(videoOptions);
+      videoOptions.onError = this.onVideoError.bind(videoOptions);
+      videoOptions.onTimeChange = this.onVideoTimeChange.bind(videoOptions);
+      videoOptions.onClose = this.onVideoClose.bind(videoOptions);
+      videoOptions.onNext = this.onNext.bind(videoOptions);
+      videoOptions.onVideoClick = this.onVideoClick.bind(videoOptions);
+      videoOptions.onSocketSessionCreate = this.onSocketSessionCreate.bind(videoOptions);
+      videoOptions.onEpisodeChange = this.onEpisodeChange.bind(videoOptions);
+
       return videoOptions;
 
 
@@ -100,14 +112,7 @@ angular.module('streama.player').factory('playerService',
         videoOptions.customStartingTime = 0;
       }
 
-      videoOptions.onPlay = this.onVideoPlay.bind(videoOptions);
-      videoOptions.onPause = this.onVideoPause.bind(videoOptions);
-      videoOptions.onError = this.onVideoError.bind(videoOptions);
-      videoOptions.onTimeChange = this.onVideoTimeChange.bind(videoOptions);
-      videoOptions.onClose = this.onVideoClose.bind(videoOptions);
-      videoOptions.onNext = this.onNext.bind(videoOptions);
-      videoOptions.onVideoClick = this.onVideoClick.bind(videoOptions);
-      videoOptions.onSocketSessionCreate = this.onSocketSessionCreate.bind(videoOptions);
+
 
       return videoOptions;
     }
@@ -315,5 +320,9 @@ angular.module('streama.player').factory('playerService',
       if($rootScope.currentUser.pauseVideoOnClick){
         $rootScope.$broadcast('triggerVideoToggle');
       }
+    }
+
+    function onEpisodeChange(episode) {
+      $state.go('player', {videoId: episode.id});
     }
 });
