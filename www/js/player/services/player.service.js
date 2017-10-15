@@ -9,37 +9,41 @@ angular.module('streama.player').factory('playerService',
     return {
       setVideoOptions: function (video) {
 
-				console.log('%c video', 'color: deeppink; font-weight: bold; text-shadow: 0 0 5px deeppink;', video);
-        return {
-					videoSrc: _.get(video, 'files[0].src'),
-					isExternalLink: true,
-					videoMetaTitle: _.get(video, 'title'),
-					episodeList: {
-						1: [
-							{id: 1, name: 'Pilot', season_number: 1, episode_number:1, episodeString: 's01e01', still_path: 'https://image.tmdb.org/t/p/original/ydlY3iPfeOAvu8gVqrxPoMvzNCn.jpg', overview: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.', videoDuration: 1320},
-							{id: 2, name: 'The Cat\'s in the Bag', season_number: 1, episode_number:2, episodeString: 's01e02', still_path: 'https://image.tmdb.org/t/p/original/tjDNvbokPLtEnpFyFPyXMOd6Zr1.jpg', overview: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.', videoDuration: 1320},
-							{id: 3, name: '...and the Bag\'s in the River', season_number: 1, episode_number:3, episodeString: 's01e03', still_path: 'https://image.tmdb.org/t/p/original/2kBeBlxGqBOdWlKwzAxiwkfU5on.jpg', overview: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.', videoDuration: 1320},
-							{id: 3, name: '...and the Bag\'s in the River', season_number: 1, episode_number:3, episodeString: 's01e03', still_path: 'https://image.tmdb.org/t/p/original/2kBeBlxGqBOdWlKwzAxiwkfU5on.jpg', overview: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.', videoDuration: 1320}
-						]
-					},
-					showEpisodeBrowser: true,
-					currentEpisode : {
-						episode: 1,
-						season: 1,
-						id: 1
-					},
+				var videoOptions = {};
 
-					subtitles: [
-						{"id": 1561, "src": "/example/sub-de.vtt", "subtitleLabel": "Deutsch", "subtitleSrcLang": "de", "contentType": "application/x-subrip"},
-						{"id": 1562, "src": "/example/sub-en.vtt", "subtitleLabel": "English", "subtitleSrcLang": "en", "contentType": "application/x-subrip"}
-					],
-
-					currentSubtitle: 1562
+				videoOptions.videoSrc = _.get(video, 'files[0].src');
+				videoOptions.isExternalLink = true;
+				videoOptions.videoMetaTitle = _.get(video, 'title') || _.get(video, 'episodeString') + ' ' + _.get(video, 'name');
+				videoOptions.episodeList = {
+					1: [
+						{id: 1, name: 'Pilot', season_number: 1, episode_number:1, episodeString: 's01e01', still_path: 'https://image.tmdb.org/t/p/original/ydlY3iPfeOAvu8gVqrxPoMvzNCn.jpg', overview: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.', videoDuration: 1320},
+						{id: 2, name: 'The Cat\'s in the Bag', season_number: 1, episode_number:2, episodeString: 's01e02', still_path: 'https://image.tmdb.org/t/p/original/tjDNvbokPLtEnpFyFPyXMOd6Zr1.jpg', overview: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.', videoDuration: 1320},
+						{id: 3, name: '...and the Bag\'s in the River', season_number: 1, episode_number:3, episodeString: 's01e03', still_path: 'https://image.tmdb.org/t/p/original/2kBeBlxGqBOdWlKwzAxiwkfU5on.jpg', overview: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.', videoDuration: 1320},
+						{id: 3, name: '...and the Bag\'s in the River', season_number: 1, episode_number:3, episodeString: 's01e03', still_path: 'https://image.tmdb.org/t/p/original/2kBeBlxGqBOdWlKwzAxiwkfU5on.jpg', overview: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.', videoDuration: 1320}
+					]
 				};
 
+				videoOptions.showEpisodeBrowser = true;
+				videoOptions.currentEpisode = {
+					episode: 1,
+					season: 1,
+					id: 1
+				};
+        videoOptions.subtitles = [
+					{"id": 1561, "src": "/example/sub-de.vtt", "subtitleLabel": "Deutsch", "subtitleSrcLang": "de", "contentType": "application/x-subrip"},
+					{"id": 1562, "src": "/example/sub-en.vtt", "subtitleLabel": "English", "subtitleSrcLang": "en", "contentType": "application/x-subrip"}
+				];
 
-				videoOptions = {};
-        videoData = video;
+        videoOptions.currentSubtitle = 1562;
+				videoOptions.onPlay = this.onVideoPlay.bind(videoOptions);
+				videoOptions.onError = this.onVideoError.bind(videoOptions);
+
+
+				console.log('%c videoOptions', 'color: deeppink; font-weight: bold; text-shadow: 0 0 5px deeppink;', videoOptions);
+				videoData = video;
+        return videoOptions;
+
+
         videoOptions.videoSrc = $sce.trustAsResourceUrl(video.files[0].src || video.files[0].externalLink);
         videoOptions.videoType = video.files[0].contentType;
 
@@ -103,7 +107,7 @@ angular.module('streama.player').factory('playerService',
           var params = {videoId: videoData.id, currentTime: videoElement.currentTime, runtime: videoElement.duration};
 
           if(params.runtime && params.videoId){
-            apiService.viewingStatus.save(params);
+            apiService.player.updateViewingStatus(params);
           }
         }, 5000);
 
@@ -152,7 +156,7 @@ angular.module('streama.player').factory('playerService',
 
       onVideoTimeChange: function (slider, duration) {
         var params = {videoId: videoData.id, currentTime: slider.value, runtime: duration};
-        apiService.viewingStatus.save(params);
+        apiService.player.updateViewingStatus(params);
 
 
         if($stateParams.sessionId){
