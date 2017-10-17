@@ -1237,6 +1237,7 @@ a {
   background: linear-gradient(transparent 0%, rgba(0, 0, 0, 0.71) 20%);
   padding: 16px;
   bottom: 0;
+  right: 0;
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
