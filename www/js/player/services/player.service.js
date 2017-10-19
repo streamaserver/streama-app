@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('streama.player').factory('playerService',
-  function ($stateParams, $sce, $state, $rootScope, websocketService, apiService, $interval, $filter) {
+  function ($stateParams, $sce, $state, $rootScope, websocketService, apiService, $interval, $filter, $ionicHistory) {
 
     var videoData = null;
     var videoOptions;
@@ -171,9 +171,7 @@ angular.module('streama.player').factory('playerService',
      *
      */
     function onVideoClose() {
-      console.log('%c onVideoClose', 'color: deeppink; font-weight: bold; text-shadow: 0 0 5px deeppink;');
-      var that = this;
-      $state.go('dash', {});
+      $ionicHistory.goBack();
     }
 
 
