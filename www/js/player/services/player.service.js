@@ -39,19 +39,17 @@ angular.module('streama.player').factory('playerService',
       videoOptions.videoStillImage = _.get(video, 'still_path') || _.get(video, 'backdrop_path');
       videoOptions.videoMetaTitle = _.get(video, 'title') || _.get(video, 'episodeString') + ' ' + _.get(video, 'name');
       videoOptions.episodeList = _.groupBy(episodes, 'season_number');
+      videoOptions.hasNextEpisode = _.get(video, 'nextEpisode');
 
-      videoOptions.showEpisodeBrowser = true;
+      videoOptions.showEpisodeBrowser = episodes ? true : false;
       videoOptions.currentEpisode = {
-        episode: 1,
-        season: 1,
-        id: 1
+        episode: video.episode_number,
+        season: video.season_number,
+        id: video.id
       };
-      videoOptions.subtitles = [
-        {"id": 1561, "src": "/example/sub-de.vtt", "subtitleLabel": "Deutsch", "subtitleSrcLang": "de", "contentType": "application/x-subrip"},
-        {"id": 1562, "src": "/example/sub-en.vtt", "subtitleLabel": "English", "subtitleSrcLang": "en", "contentType": "application/x-subrip"}
-      ];
 
-      videoOptions.currentSubtitle = 1562;
+      videoOptions.subtitles = video.subtitles;
+      videoOptions.currentSubtitle = _.get(video, 'subtitles[0].id');
       videoOptions.onPlay = this.onVideoPlay.bind(videoOptions);
       videoOptions.onError = this.onVideoError.bind(videoOptions);
 
