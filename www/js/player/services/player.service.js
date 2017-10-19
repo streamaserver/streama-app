@@ -36,7 +36,7 @@ angular.module('streama.player').factory('playerService',
 
       videoOptions.videoSrc = _.get(video, 'files[0].src');
       videoOptions.isExternalLink = true;
-      videoOptions.videoStillImage = _.get(video, 'still_path');
+      videoOptions.videoStillImage = _.get(video, 'still_path') || _.get(video, 'backdrop_path');
       videoOptions.videoMetaTitle = _.get(video, 'title') || _.get(video, 'episodeString') + ' ' + _.get(video, 'name');
       videoOptions.episodeList = _.groupBy(episodes, 'season_number');
 
