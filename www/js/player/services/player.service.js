@@ -10,6 +10,7 @@ angular.module('streama.player').factory('playerService',
       viewingStatusSaveInterval: null,
       setVideoOptions: setVideoOptions,
       onVideoPlay: onVideoPlay,
+      onScrub: onScrub,
       onVideoPause: onVideoPause,
       onVideoClose: onVideoClose,
       onVideoError: onVideoError,
@@ -66,6 +67,7 @@ angular.module('streama.player').factory('playerService',
       videoOptions.onVideoClick = this.onVideoClick.bind(videoOptions);
       videoOptions.onSocketSessionCreate = this.onSocketSessionCreate.bind(videoOptions);
       videoOptions.onEpisodeChange = this.onEpisodeChange.bind(videoOptions);
+      videoOptions.onScrub = this.onScrub.bind(videoOptions);
 
       return videoOptions;
 
@@ -126,14 +128,11 @@ angular.module('streama.player').factory('playerService',
       var that = this;
       console.log('%c onVideoPlay', 'color: deeppink; font-weight: bold; text-shadow: 0 0 5px deeppink;');
 
-      that.viewingStatusSaveInterval = $interval(function() {
-        var params = {videoId: videoData.id, currentTime: videoElement.currentTime, runtime: videoElement.duration};
+      saveViewingStatus(that, videoElement);
 
-        if(params.runtime && params.videoId){
-          apiService.player.updateViewingStatus(params);
-        }
+      that.viewingStatusSaveInterval = $interval(function () {
+        saveViewingStatus(videoOptions, videoElement);
       }, 5000);
-
 
       if($stateParams.sessionId && !socketData){
         console.log('%c send socket event PLAY', 'color: deeppink; font-weight: bold; text-shadow: 0 0 5px deeppink;');
@@ -141,6 +140,19 @@ angular.module('streama.player').factory('playerService',
       }
     }
 
+    function onScrub(videoElement, socketData) {
+      saveViewingStatus(this, videoElement);
+
+      //TODO update socket info
+    }
+
+
+    function saveViewingStatus(videoOptions, videoElement) {
+      var params = {videoId: videoData.id, currentTime: videoElement.currentTime, runtime: videoElement.duration};
+      if (params.runtime && params.videoId) {
+        apiService.player.updateViewingStatus(params);
+      }
+    }
 
     /**
      *
@@ -314,9 +326,9 @@ angular.module('streama.player').factory('playerService',
      *
      */
     function onVideoClick() {
-      if($rootScope.currentUser.pauseVideoOnClick){
-        $rootScope.$broadcast('triggerVideoToggle');
-      }
+      // if($rootScope.currentUser.pauseVideoOnClick){
+      //   $rootScope.$broadcast('triggerVideoToggle');
+      // }
     }
 
     function onEpisodeChange(episode) {
