@@ -3,13 +3,6 @@
   "app_id": "d4060c17",
   "type": "ionic1",
   "integrations": {
-    "gulp": {},
     "cordova": {}
-  },
-  "watchPatterns": [
-    "scss/**/*",
-    "www/**/*",
-    "!www/lib/**/*",
-    "!www/**/*.map"
-  ]
+  }
 }
