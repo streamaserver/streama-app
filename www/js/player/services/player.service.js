@@ -181,7 +181,7 @@ angular.module('streama.player').factory('playerService',
      *
      */
     function onVideoClose() {
-      $ionicHistory.goBack();
+      $state.go('main.dash');
     }
 
 
