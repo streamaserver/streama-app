@@ -1132,12 +1132,14 @@ a {
   padding: 15px; }
   .dashboard h3 {
     margin-top: 30px; }
+  .dashboard .ion-slides-poster {
+    height: 230px; }
   .dashboard .ion-slides-continue-watching .swiper-container {
     height: 235px; }
   .dashboard .ion-slides-continue-watching .swiper-slide {
     width: 250px; }
   .dashboard .ion-slides-new-releases .swiper-container {
-    height: 350px; }
+    height: 330px; }
   .dashboard .ion-slides-poster .swiper-container {
     height: 230px; }
   .dashboard .ion-slides-poster .swiper-slide {
