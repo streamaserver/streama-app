@@ -27,6 +27,14 @@ angular.module('streama')
 		}
 
 		function toggleSearch() {
-			console.log('%c toggleSearch', 'color: deeppink; font-weight: bold; text-shadow: 0 0 5px deeppink;');
+      $rootScope.searchQuery = '';
+      $rootScope.isSearchActive = !$rootScope.isSearchActive;
+
+		  if($rootScope.isSearchActive){
+		    setTimeout(function () {
+          $('.dashboard-search-box input').focus();
+        }, 200);
+      }
+
 		}
   });

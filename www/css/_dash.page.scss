@@ -57,6 +57,20 @@
     font-weight: 100;
   }
 
+  &.is-search-active{
+    padding-top: 60px;
+  }
+
+}
+
+.dashboard-search-box{
+  position: absolute;
+  top: 44px;
+  left: 0;
+  right: 0;
+  background: #25292B;
+  z-index: 9;
+  padding: 13px;
 }
 
 .modal-media-detail{

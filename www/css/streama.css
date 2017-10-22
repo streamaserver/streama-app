@@ -428,6 +428,13 @@ hr {
   border: 1px solid #222;
   margin-bottom: 20px; }
 
+.input-dark {
+  border-color: #25292b;
+  background-color: rgba(255, 255, 255, 0.12);
+  color: white; }
+  .input-dark input {
+    color: white; }
+
 .flex-row {
   display: -webkit-box;
   display: -moz-box;
@@ -1155,6 +1162,17 @@ a {
     display: inline-block;
     font-size: 26px;
     font-weight: 100; }
+  .dashboard.is-search-active {
+    padding-top: 60px; }
+
+.dashboard-search-box {
+  position: absolute;
+  top: 44px;
+  left: 0;
+  right: 0;
+  background: #25292B;
+  z-index: 9;
+  padding: 13px; }
 
 .modal-media-detail {
   max-height: inherit !important; }
