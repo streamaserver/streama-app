@@ -69,40 +69,6 @@ angular.module('streama.player').factory('playerService',
       videoOptions.onEpisodeChange = this.onEpisodeChange.bind(videoOptions);
       videoOptions.onScrub = this.onScrub.bind(videoOptions);
 
-      return videoOptions;
-
-
-      videoOptions.videoSrc = $sce.trustAsResourceUrl(video.files[0].src || video.files[0].externalLink);
-      videoOptions.videoType = video.files[0].contentType;
-
-      if(video.subtitles && video.subtitles.length){
-        videoOptions.videoTrack = $sce.trustAsResourceUrl(video.subtitles[0].src);
-      }
-
-      videoOptions.videoMetaTitle = (video.show ? video.show.name : video.title);
-      videoOptions.videoMetaSubtitle = (video.show ? video.episodeString + ' - ' + video.name : (video.release_date ? video.release_date.substring(0, 4) : ''));
-      videoOptions.videoMetaDescription = video.overview;
-
-      if(videoData.nextEpisode){
-        console.log('%c showNextButton', 'color: deeppink; font-weight: bold; text-shadow: 0 0 5px deeppink;');
-        videoOptions.showNextButton = true;
-      }
-
-      if(videoData.show){
-        videoOptions.showEpisodeBrowser = true;
-
-        apiService.tvShow.episodesForTvShow(videoData.show.id).success(function (episodes) {
-          videoOptions.episodeList = _.groupBy(episodes, 'season_number');
-          videoOptions.selectedEpisodes = videoOptions.episodeList[videoData.season_number];
-          videoOptions.currentEpisode = {
-            episode: videoData.episode_number,
-            season: videoData.season_number,
-            intro_start: videoData.intro_start,
-            intro_end: videoData.intro_end,
-            outro_start: videoData.outro_start
-          };
-        });
-      }
 
       if($stateParams.currentTime){
         videoOptions.customStartingTime = $stateParams.currentTime;
