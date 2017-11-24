@@ -4,8 +4,9 @@ angular.module('streama.dash')
 	console.log('%c $stateParams', 'color: deeppink; font-weight: bold; text-shadow: 0 0 5px deeppink;', $stateParams);
 
 	vm.continueWatching = continueWatching;
-	
-	
+	vm.setCurrentSeason = setCurrentSeason;
+
+
 	function continueWatching() {
 		if($stateParams.mediaType === 'tvShow'){
 			apiService.dash.cotinueWatching({id: $stateParams.mediaId}).then(function (response) {
@@ -17,6 +18,10 @@ angular.module('streama.dash')
 			$state.go('player', {videoId: $stateParams.mediaId});
 		}
 	}
+
+	function setCurrentSeason(season) {
+    vm.currentSeason = season;
+  }
 
 
 	apiService.dash.mediaDetail({id: $stateParams.mediaId, mediaType: $stateParams.mediaType}).then(function (response) {
