@@ -76,7 +76,7 @@
          <div class="col col-33">
            <div class="row media-detail-episode-image-wrapper">
              <div class="media-detail-episode-still">
-               <img ng-if="episode.still_path" ng-src="https://image.tmdb.org/t/p/w300/{{episode.still_path}}"/>
+               <img ng-if="episode.still_path" ng-src="{{episode.still_path}}"/>
                <div ng-if="!episode.still_path" class="fallback-image"></div>
              </div>
 
@@ -87,7 +87,7 @@
          </div>
          <div class="col">
            <h3 class="media-title"><span ng-show="episode.episodeString">{{episode.episodeString}}</span> {{episode.name}}</h3>
-           <p>{{episode.overview}}</p>
+           <p>{{episode.overview | streamaTextDotDotDot:150}}</p>
          </div>
 
        </div>
