@@ -12,16 +12,16 @@ angular.module('streama.dash')
 		vm.swiperOptions = initSwiperOptions();
 
 		apiService.dash.listContinueWatching().then(function (response) {
-			vm.continueWatchingList = response.data
+			vm.continueWatchingList = response.data;
 		});
 		apiService.dash.listShows().then(function (response) {
-			vm.shows = response.data
+			vm.shows = response.data;
 		});
 		apiService.dash.listMovies().then(function (response) {
-			vm.movies = response.data
+			vm.movies = response.data;
 		});
 		apiService.dash.listGenericVideos().then(function (response) {
-			vm.genericVideos = response.data
+			vm.genericVideos = response.data;
 		});
 		apiService.dash.listNewReleases().then(function (response) {
 			vm.newReleases = response.data;
