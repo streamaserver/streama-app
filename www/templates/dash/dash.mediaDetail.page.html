@@ -60,37 +60,38 @@
                 frameborder="0" allowfullscreen></iframe>
       </div>
 
-      <hr>
 
 
+     <div ng-if="vm.media.mediaType === 'tvShow'">
+       <hr>
+       <div class="season-picker-list">
+         <h4>{{'VIDEO.EPISODES' | translate}}</h4>
+         <div class="season-picker-item" ng-class="{'active': vm.currentSeason == season}" ng-click="vm.setCurrentSeason(season)"
+              ng-repeat="(season, episodes) in vm.seasons">
+           {{'VIDEO.SEASON' | translate}} {{season}}
+         </div>
+       </div>
 
-      <div class="season-picker-list">
-        <h4>{{'VIDEO.EPISODES' | translate}}</h4>
-          <div class="season-picker-item" ng-class="{'active': vm.currentSeason == season}" ng-click="vm.setCurrentSeason(season)"
-                ng-repeat="(season, episodes) in vm.seasons">
-            {{'VIDEO.SEASON' | translate}} {{season}}
-          </div>
-      </div>
+       <div class="row media-detail-episode-item" ng-repeat="episode in vm.seasons[vm.currentSeason] | orderBy:'episode_number'">
+         <div class="col col-33">
+           <div class="row media-detail-episode-image-wrapper">
+             <div class="media-detail-episode-still">
+               <img ng-if="episode.still_path" ng-src="https://image.tmdb.org/t/p/w300/{{episode.still_path}}"/>
+               <div ng-if="!episode.still_path" class="fallback-image"></div>
+             </div>
 
-      <div class="row media-detail-episode-item" ng-repeat="episode in vm.seasons[vm.currentSeason] | orderBy:'episode_number'">
-        <div class="col col-33">
-          <div class="row media-detail-episode-image-wrapper">
-            <div class="media-detail-episode-still">
-              <img ng-if="episode.still_path" ng-src="https://image.tmdb.org/t/p/w300/{{episode.still_path}}"/>
-              <div ng-if="!episode.still_path" class="fallback-image"></div>
-            </div>
+             <div class="media-detail-episode-play-button text-center">
+               <a ui-sref="player({videoId: episode.id})" class="play-icon ion-ios-play"></a>
+             </div>
+           </div>
+         </div>
+         <div class="col">
+           <h3 class="media-title"><span ng-show="episode.episodeString">{{episode.episodeString}}</span> {{episode.name}}</h3>
+           <p>{{episode.overview}}</p>
+         </div>
 
-            <div class="media-detail-episode-play-button text-center">
-              <a ui-sref="player({videoId: episode.id})" class="play-icon ion-ios-play"></a>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <h3 class="media-title"><span ng-show="episode.episodeString">{{episode.episodeString}}</span> {{episode.name}}</h3>
-          <p>{{episode.overview}}</p>
-        </div>
-
-      </div>
+       </div>
+     </div>
     </div>
 
 
