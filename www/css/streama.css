@@ -1017,6 +1017,16 @@ a {
   margin-right: 9px; }
 .media-detail h2 {
   font-size: 18px; }
+.media-detail .season-picker-item {
+  float: left;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  border: 1px solid #ffffff63;
+  padding: 2px 11px;
+  border-radius: 18px; }
+  .media-detail .season-picker-item.active {
+    background: #B0DDEF;
+    color: black; }
 
 .media-detail-episode-item {
   border-bottom: 1px solid #3e3e3e;

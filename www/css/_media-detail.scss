@@ -52,6 +52,20 @@
   h2{
     font-size: 18px;
   }
+
+  .season-picker-item{
+    float: left;
+    margin-right: 8px;
+    margin-bottom: 8px;
+    border: 1px solid #ffffff63;
+    padding: 2px 11px;
+    border-radius: 18px;
+
+    &.active{
+      background: $primary;
+      color: black;
+    }
+  }
 }
 
 .media-detail-episode-item{
