@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('streama.dash')
 .controller('DashCtrl', function(currentUser, apiService, $ionicSideMenuDelegate, $ionicScrollDelegate, $state, $scope) {
 	var vm = this;
