@@ -1,7 +1,8 @@
 angular.module('streama.dash')
-.controller('DashCtrl', function(currentUser, apiService, $ionicSideMenuDelegate, $ionicScrollDelegate, $state) {
+.controller('DashCtrl', function(currentUser, apiService, $ionicSideMenuDelegate, $ionicScrollDelegate, $state, $scope) {
 	var vm = this;
 	vm.openMediaDetail = openMediaDetail;
+  $scope.$on('$stateChangeSuccess', onStateChangeSuccess);
 	init();
 
 
@@ -29,6 +30,12 @@ angular.module('streama.dash')
 			vm.recommendations = response.data;
 		});
 	}
+
+	function onStateChangeSuccess(e, toState) {
+	  if(toState.name === 'main.dash'){
+	    init();
+    }
+  }
 
 	function openMediaDetail(media) {
 		var options = { reload: false };
