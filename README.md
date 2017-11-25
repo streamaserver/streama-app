@@ -1,9 +1,14 @@
-Ionic App Base
+Streama App
 ==============
 
-A starting project for Ionic that optionally supports using custom SCSS.
+Get it in the play store now: 
 
-## Using this project
+[
+![Get in in the google play store](https://play.google.com/intl/en_us/badges/images/badge_new.png)](https://play.google.com/store/apps/details?id=dularion.streama)
+
+
+
+## Developing on this project
 
 We recommend using the [Ionic CLI](https://github.com/ionic-team/ionic-cli) to create new Ionic projects that are based on this project but use a ready-made starter template.
 
