@@ -1,5 +1,10 @@
 .media-continue-watching-item{
 
+  .media-item-inner{
+    background-size: cover;
+    background-position: center;
+  }
+
   .continue-watching-info{
     @include align-self(center);
     i{

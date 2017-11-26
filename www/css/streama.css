@@ -952,6 +952,9 @@ a {
   word-spacing: 10px;
   opacity: .15; }
 
+.media-continue-watching-item .media-item-inner {
+  background-size: cover;
+  background-position: center; }
 .media-continue-watching-item .continue-watching-info {
   -webkit-align-self: center;
   align-self: center; }
