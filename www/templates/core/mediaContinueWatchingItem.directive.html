@@ -19,7 +19,7 @@
           <div class="progress-inner" style="width: {{item.currentPlayTime / item.runtime * 100}}%;"></div>
         </div>
       </div>
-      <div class="continue-watching-info" ui-sref="main.mediaDetail({mediaId: item.video.id, mediaType: item.video.mediaType})">
+      <div class="continue-watching-info" ui-sref="main.mediaDetail({mediaId: item.video.id, mediaType: item.video.mediaType, isContinuing: true})">
         <i class="ion-ios-information-outline" ></i>
       </div>
     </div>

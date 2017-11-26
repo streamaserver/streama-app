@@ -41,6 +41,11 @@
         </div>
 
 
+
+        <hr>
+        <button class="btn btn-primary" ng-click="vm.markAsCompleted()" ng-if="vm.isContinuing">Mark as Completed</button>
+
+
         <div class="spinner big" ng-show="!vm.media">
           <div class="bounce1"></div>
           <div class="bounce2"></div>

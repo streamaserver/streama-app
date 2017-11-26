@@ -1,10 +1,12 @@
 angular.module('streama.dash')
-.controller('MediaDetailCtrl', function($stateParams, apiService, $state) {
+.controller('MediaDetailCtrl', function($stateParams, apiService, $state, $rootScope) {
 	var vm = this;
 	console.log('%c $stateParams', 'color: deeppink; font-weight: bold; text-shadow: 0 0 5px deeppink;', $stateParams);
 
 	vm.continueWatching = continueWatching;
 	vm.setCurrentSeason = setCurrentSeason;
+	vm.markAsCompleted = markAsCompleted;
+	vm.isContinuing = $stateParams.isContinuing;
 
 
 	function continueWatching() {
@@ -18,6 +20,12 @@ angular.module('streama.dash')
 			$state.go('player', {videoId: $stateParams.mediaId});
 		}
 	}
+
+	function markAsCompleted() {
+    apiService.dash.markAsCompleted({id: $stateParams.mediaId}).then(function () {
+      $state.go('main.dash');
+    });
+  }
 
 	function setCurrentSeason(season) {
     vm.currentSeason = season;

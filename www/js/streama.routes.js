@@ -30,7 +30,7 @@ angular.module('streama').config(function($stateProvider, $urlRouterProvider) {
   })
 
   .state('main.mediaDetail', {
-    url: '/dash/:mediaType/:mediaId',
+    url: '/dash/:mediaType/:mediaId?isContinuing',
 		resolve: {
 			currentUser: currentUserResolve
 		},

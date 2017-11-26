@@ -82,6 +82,9 @@ angular.module('streama.core')
 				},
 				cotinueWatching: function (params) {
 					return $http.get(basePath + apiBase + 'dash/cotinueWatching', {params: params});
+				},
+        markAsCompleted: function (params) {
+					return $http.get(basePath + apiBase + 'dash/markAsCompleted', {params: params});
 				}
 			},
 
