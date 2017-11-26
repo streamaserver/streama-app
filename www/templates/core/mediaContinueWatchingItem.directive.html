@@ -1,8 +1,5 @@
 <div class="media-item media-continue-watching-item" ng-click="playMedia($event, item)">
-  <div class="media-item-inner" style="height: 146px;">
-
-    <img ng-if="item.video.backdrop_path" ng-src="https://image.tmdb.org/t/p/w300{{item.video.backdrop_path}}"/>
-    <img ng-if="!item.video.backdrop_path" ng-src="img/poster-not-found.png"/>
+  <div class="media-item-inner" style="height: 146px;" ng-style="getImage(item.video)">
 
     <a class="play-icon ion-ios-play" ui-sref="player({videoId: item.video.id})" ui-sref-opts="{reload: true, notify: true}"></a>
   </div>
