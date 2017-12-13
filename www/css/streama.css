@@ -1151,7 +1151,8 @@ a {
 .dashboard {
   padding: 15px; }
   .dashboard h3 {
-    margin-top: 30px; }
+    margin-top: 30px;
+    line-height: 28px; }
   .dashboard .ion-slides-poster {
     height: 230px; }
   .dashboard .ion-slides-continue-watching .swiper-container {

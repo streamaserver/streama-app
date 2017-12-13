@@ -73,7 +73,11 @@
 
 
     <div ng-show="(vm.show.list | filter:$root.searchQuery).length">
-      <h3>{{'DASHBOARD.DISCOVER_SHOWS' | translate}}</h3>
+      <h3>
+        {{'DASHBOARD.DISCOVER_SHOWS' | translate}}
+        <video-sort-order-dropdown ng-if="$root.serverVersion" class="pull-right" ng-model="vm.show.sorter"
+                                   ng-model-options="{getterSetter:true}" dropdown-type="'tvShow'"></video-sort-order-dropdown>
+      </h3>
 
       <ion-slides options="vm.swiperOptions" slider="data.sliderTv" class="ion-slides-poster">
         <ion-slide-page ng-repeat="item in vm.show.list | filter:$root.searchQuery">
@@ -83,7 +87,11 @@
     </div>
 
     <div ng-show="(vm.movie.list | filter:$root.searchQuery).length">
-      <h3>{{'DASHBOARD.DISCOVER_MOVIES' | translate}}</h3>
+      <h3>
+        {{'DASHBOARD.DISCOVER_MOVIES' | translate}}
+        <video-sort-order-dropdown ng-if="$root.serverVersion" class="pull-right" ng-model="vm.movie.sorter"
+                                   ng-model-options="{getterSetter:true}" dropdown-type="'movie'"></video-sort-order-dropdown>
+      </h3>
 
       <ion-slides options="vm.swiperOptions" slider="data.sliderMovies" class="ion-slides-poster">
         <ion-slide-page ng-repeat="item in vm.movie.list | filter:$root.searchQuery">
@@ -95,7 +103,11 @@
 
 
     <div ng-show="(vm.genericVideo.list | filter:$root.searchQuery).length">
-      <h3>{{'DASHBOARD.DISCOVER_OTHER_VIDEOS' | translate}}</h3>
+      <h3>
+        {{'DASHBOARD.DISCOVER_OTHER_VIDEOS' | translate}}
+        <video-sort-order-dropdown ng-if="$root.serverVersion" class="pull-right" ng-model="vm.genericVideo.sorter"
+                                   ng-model-options="{getterSetter:true}" dropdown-type="'genericVideo'"></video-sort-order-dropdown>
+      </h3>
 
       <ion-slides options="vm.swiperOptions" slider="data.sliderGenericVideos" class="ion-slides-poster">
         <ion-slide-page ng-repeat="item in vm.genericVideo.list | filter:$root.searchQuery">
