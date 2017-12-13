@@ -6,7 +6,7 @@
 // 'starter.controllers' is found in dash.controller.js
 angular.module('streama', [
 	//external libs
-	'ionic', 'ionic.cloud', 'LocalStorageModule',
+	'ionic', 'ionic.cloud', 'LocalStorageModule', 'ui.bootstrap',
 
 	//streama modules
 	'streama.setup', 'streama.core', 'streama.dash', 'streama.translations', 'streama.player', 'streama.videoPlayer'])
