@@ -19,7 +19,17 @@ angular.module('streama').config(function($stateProvider, $urlRouterProvider) {
   .state('main.dash', {
     url: '/dash',
 		resolve: {
-			currentUser: currentUserResolve
+			currentUser: currentUserResolve,
+      serverVersion: function (apiService, $rootScope) {
+        var domain = apiService.setup.getDomain();
+        return apiService.setup.getInfo(domain).then(function (response) {
+          var serverVersion = response.data.streamaVersion;
+          $rootScope.serverVersion = serverVersion;
+          return serverVersion;
+        }, function () {
+          return {};
+        });
+      }
 		},
 		views: {
 			'content': {

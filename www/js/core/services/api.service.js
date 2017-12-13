@@ -40,6 +40,9 @@ angular.module('streama.core')
 
 
 			setup: {
+				getInfo: function (domain) {
+					return $http.get(domain + apiBase + 'getInfo');
+				},
 				validateDomain: function (domain) {
 					return $http.get(domain + apiBase + 'validateDomain');
 				},
@@ -60,13 +63,13 @@ angular.module('streama.core')
 					return $http.get(basePath + apiBase + 'dash/listContinueWatching');
 				},
 				listShows: function (params) {
-					return $http.get(basePath + apiBase + 'dash/listShows');
+					return $http.get(basePath + apiBase + 'dash/listShows', {params: params});
 				},
 				listMovies: function (params) {
-					return $http.get(basePath + apiBase + 'dash/listMovies');
+					return $http.get(basePath + apiBase + 'dash/listMovies', {params: params});
 				},
 				listGenericVideos: function (params) {
-					return $http.get(basePath + apiBase + 'dash/listGenericVideos');
+					return $http.get(basePath + apiBase + 'dash/listGenericVideos', {params: params});
 				},
 				listNewReleases: function (params) {
 					return $http.get(basePath + apiBase + 'dash/listNewReleases');

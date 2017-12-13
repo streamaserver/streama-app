@@ -10,7 +10,7 @@
   <div class="dashboard-search-box item-input-inset" ng-show="$root.isSearchActive">
     <label class="item-input-wrapper input-dark">
       <i class="icon ion-ios-search placeholder-icon"></i>
-      <input type="search" placeholder="Search Media..." ng-model="$root.searchQuery">
+      <input type="search" placeholder="Search Media..." ng-model="$root.searchQuery" ng-model-options="{debounce: 333}">
     </label>
     <button class="button button-clear button-light" ng-click="$root.toggleSearch()">
       Cancel
@@ -47,7 +47,6 @@
 
 
     <div ng-show="((vm.continueWatchingList | filter:$root.searchQuery).length)">
-
       <h3>{{'DASHBOARD.CONTINUE_WATCHING' | translate}}</h3>
 
       <ion-slides options="vm.swiperOptions" slider="data.sliderContinueWatching" class="ion-slides-continue-watching">
@@ -73,21 +72,21 @@
    </div>
 
 
-    <div ng-show="(vm.shows | filter:$root.searchQuery).length">
+    <div ng-show="(vm.show.list | filter:$root.searchQuery).length">
       <h3>{{'DASHBOARD.DISCOVER_SHOWS' | translate}}</h3>
 
       <ion-slides options="vm.swiperOptions" slider="data.sliderTv" class="ion-slides-poster">
-        <ion-slide-page ng-repeat="item in vm.shows | filter:$root.searchQuery">
+        <ion-slide-page ng-repeat="item in vm.show.list | filter:$root.searchQuery">
           <streama-media-item item="item"></streama-media-item>
         </ion-slide-page>
       </ion-slides>
     </div>
 
-    <div ng-show="(vm.movies | filter:$root.searchQuery).length">
+    <div ng-show="(vm.movie.list | filter:$root.searchQuery).length">
       <h3>{{'DASHBOARD.DISCOVER_MOVIES' | translate}}</h3>
 
       <ion-slides options="vm.swiperOptions" slider="data.sliderMovies" class="ion-slides-poster">
-        <ion-slide-page ng-repeat="item in vm.movies | filter:$root.searchQuery">
+        <ion-slide-page ng-repeat="item in vm.movie.list | filter:$root.searchQuery">
           <streama-media-item item="item"></streama-media-item>
         </ion-slide-page>
       </ion-slides>
@@ -95,11 +94,11 @@
     </div>
 
 
-    <div ng-show="(vm.genericVideos | filter:$root.searchQuery).length">
+    <div ng-show="(vm.genericVideo.list | filter:$root.searchQuery).length">
       <h3>{{'DASHBOARD.DISCOVER_OTHER_VIDEOS' | translate}}</h3>
 
       <ion-slides options="vm.swiperOptions" slider="data.sliderGenericVideos" class="ion-slides-poster">
-        <ion-slide-page ng-repeat="item in vm.genericVideos | filter:$root.searchQuery">
+        <ion-slide-page ng-repeat="item in vm.genericVideo.list | filter:$root.searchQuery">
           <streama-media-item item="item"></streama-media-item>
         </ion-slide-page>
       </ion-slides>
