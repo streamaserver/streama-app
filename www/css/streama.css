@@ -435,6 +435,10 @@ hr {
   .input-dark input {
     color: white; }
 
+.row {
+  margin-left: 0;
+  margin-right: 0; }
+
 .flex-row {
   display: -webkit-box;
   display: -moz-box;
