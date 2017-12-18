@@ -12,7 +12,6 @@
 
     function init() {
       $ionicSideMenuDelegate.canDragContent(false);
-      $ionicScrollDelegate.freezeAllScrolls(true);
       vm.swiperOptions = initSwiperOptions();
 
       apiService.dash.listContinueWatching().then(function (response) {
