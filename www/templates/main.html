@@ -20,7 +20,7 @@
         <ion-item menu-close ui-sref="main.dash">
           {{'DASHBOARD.TITLE' | translate}}
         </ion-item>
-        <ion-item menu-close ui-sref="main.mediaDetail()">
+        <ion-item menu-close ui-sref="main.dash" ng-click="$root.toggleSearch()">
           Search
         </ion-item>
         <ion-item menu-close ng-click="$root.logout()">
