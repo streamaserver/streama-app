@@ -19,12 +19,12 @@ angular.module('streama.core')
 					var imagePath = 'img/poster-not-found.png';
 					var result = {};
 
-					if(item.backdrop_image_src){
-						imagePath =  item.backdrop_image_src;
-					}
-          else if(item.poster_image_src){
+          if(item.poster_image_src){
             imagePath = item.poster_image_src;
           }
+          else if(item.backdrop_image_src){
+						imagePath =  item.backdrop_image_src;
+					}
 
 					else if(item.poster_path){
 						imagePath =  'https://image.tmdb.org/t/p/w300/' + item.poster_path;
