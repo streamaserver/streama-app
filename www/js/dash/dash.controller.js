@@ -31,8 +31,8 @@
       });
     }
 
-    function onSearch(searchQuery) {
-      if(searchQuery){
+    function onSearch(searchQuery, oldQuery) {
+      if(searchQuery !== oldQuery){
         vm.show.filter.name = searchQuery;
         vm.show.search();
         vm.movie.filter.title = searchQuery;
@@ -40,7 +40,6 @@
         vm.genericVideo.filter.title = searchQuery;
         vm.genericVideo.search();
       }
-      console.log('%c onSearch', 'color: deeppink; font-weight: bold; text-shadow: 0 0 5px deeppink;', arguments);
     }
 
     function onStateChangeSuccess(e, toState) {
