@@ -13,7 +13,7 @@
     function init() {
       $scope.mainVm.selectedGenre = null;
       $ionicSideMenuDelegate.canDragContent(false);
-      vm.swiperOptions = initSwiperOptions();
+      vm.swiperOptions = mediaListService.initSwiperOptions();
 
       apiService.dash.listContinueWatching().then(function (response) {
         vm.continueWatchingList = response.data;
@@ -56,16 +56,6 @@
     function openMediaDetail(media) {
       var options = { reload: false };
       $state.go('main.mediaDetail', {mediaId: media.id}, options);
-    }
-
-    function initSwiperOptions() {
-      return {
-        pagination: '.swiper-pagination',
-        slidesPerView: 'auto',
-        paginationClickable: true,
-        spaceBetween: 8,
-        freeMode: true
-      };
     }
 
   });

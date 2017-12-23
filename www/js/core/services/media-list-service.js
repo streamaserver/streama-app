@@ -6,66 +6,80 @@
       var LIST_MAX = 30;
 
       return {
-        init: function (endpoint, defaultSort) {
-          var mediaListConfig = {
-            total: 0,
-            currentSort: defaultSort || {sort: 'title', order: 'ASC'},
-            list: [],
-            currentOffset: 0,
-            isLoading: true,
-            sorter: _.getterSetter(setSort, getSort),
-            filter: {
-              tags: null,
-              genre: null,
-              title: null
-            },
-            fetch: endpoint,
-            search: search,
-            loadMore: loadMore,
-            getThumbnail: getThumbnail
-          };
-
-          fetchData(mediaListConfig);
-
-          return mediaListConfig;
-
-
-          function search() {
-            fetchData(mediaListConfig);
-          }
-
-          function getSort() {
-            return mediaListConfig.currentSort;
-          }
-
-          function setSort(sort) {
-            mediaListConfig.currentSort = sort;
-            mediaListConfig.currentOffset = 0;
-            fetchData(mediaListConfig);
-          }
-
-          function loadMore() {
-            mediaListConfig.currentOffset += LIST_MAX;
-            fetchData(mediaListConfig);
-          }
-
-
-          function getThumbnail(movie) {
-            if (!movie.poster_path && !movie.poster_image_src) {
-              return 'img/poster-not-found.png';
-            }
-            if (movie.poster_path) {
-              return 'https://image.tmdb.org/t/p/w300/' + movie.poster_path;
-            }
-
-            if (movie.poster_image_src) {
-              return movie.poster_image_src;
-            }
-
-          }
-        }
+        initSwiperOptions: initSwiperOptions,
+        init: initMediaList
       };
 
+
+      function initMediaList(endpoint, defaultSort) {
+        var mediaListConfig = {
+          total: 0,
+          currentSort: defaultSort || {sort: 'title', order: 'ASC'},
+          list: [],
+          currentOffset: 0,
+          isLoading: true,
+          sorter: _.getterSetter(setSort, getSort),
+          filter: {
+            tags: null,
+            genre: null,
+            title: null
+          },
+          fetch: endpoint,
+          search: search,
+          loadMore: loadMore,
+          getThumbnail: getThumbnail
+        };
+
+        fetchData(mediaListConfig);
+
+        return mediaListConfig;
+
+
+        function search() {
+          fetchData(mediaListConfig);
+        }
+
+        function getSort() {
+          return mediaListConfig.currentSort;
+        }
+
+        function setSort(sort) {
+          mediaListConfig.currentSort = sort;
+          mediaListConfig.currentOffset = 0;
+          fetchData(mediaListConfig);
+        }
+
+        function loadMore() {
+          mediaListConfig.currentOffset += LIST_MAX;
+          fetchData(mediaListConfig);
+        }
+
+
+        function getThumbnail(movie) {
+          if (!movie.poster_path && !movie.poster_image_src) {
+            return 'img/poster-not-found.png';
+          }
+          if (movie.poster_path) {
+            return 'https://image.tmdb.org/t/p/w300/' + movie.poster_path;
+          }
+
+          if (movie.poster_image_src) {
+            return movie.poster_image_src;
+          }
+
+        }
+      }
+
+
+      function initSwiperOptions() {
+        return {
+          pagination: '.swiper-pagination',
+          slidesPerView: 'auto',
+          paginationClickable: true,
+          spaceBetween: 8,
+          freeMode: true
+        };
+      }
 
       function fetchData(mediaConfig) {
         var params = {
