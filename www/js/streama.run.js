@@ -1,7 +1,9 @@
 angular.module('streama')
-  .run(function($ionicPlatform, $rootScope, apiService, $state) {
+  .run(function($ionicPlatform, $rootScope, apiService, $state, localStorageService) {
 
 		$rootScope.logout = logout;
+		$rootScope.changeServerConnection = changeServerConnection;
+
     $ionicPlatform.ready(onPlatformReady);
 		$rootScope.navLogo = '<img class="title-image" src="img/logo.png" />';
 
@@ -21,6 +23,13 @@ angular.module('streama')
 
 		function logout() {
 			apiService.core.logout().then(function () {
+				$state.go('setup');
+			});
+		}
+
+		function changeServerConnection() {
+			apiService.core.logout().then(function () {
+        localStorageService.remove('streamaDomain');
 				$state.go('setup');
 			});
 		}
