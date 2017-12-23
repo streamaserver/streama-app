@@ -29,6 +29,7 @@ angular.module('streama')
 
 		function changeServerConnection() {
 			apiService.core.logout().then(function () {
+			  apiService.setBasePath(null);
         localStorageService.remove('streamaDomain');
 				$state.go('setup');
 			});

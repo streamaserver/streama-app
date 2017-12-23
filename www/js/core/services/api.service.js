@@ -9,6 +9,9 @@ angular.module('streama.core')
 			getBasePath: function () {
 				return basePath;
 			},
+			setBasePath: function (_basePath) {
+        basePath = _basePath;
+			},
 
 			core: {
 				login: function (data) {
