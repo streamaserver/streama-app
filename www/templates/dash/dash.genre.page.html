@@ -20,7 +20,7 @@
   <ion-content class="dashboard" ng-class="{'is-search-active': mainVm.isSearchActive}">
     <h1>Browse Genre: {{mainVm.selectedGenre.name}}</h1>
 
-    <div ng-show="(vm.show.list | filter:$root.searchQuery).length">
+    <div ng-show="(vm.show.list | filter:mainVm.searchQuery).length">
       <h3>
         {{'DASHBOARD.DISCOVER_SHOWS' | translate}}
         <video-sort-order-dropdown ng-if="$root.serverVersion" class="pull-right" ng-model="vm.show.sorter"
@@ -28,13 +28,13 @@
       </h3>
 
       <ion-slides options="vm.swiperOptions" slider="data.sliderTv" class="ion-slides-poster">
-        <ion-slide-page ng-repeat="item in vm.show.list | filter:$root.searchQuery">
+        <ion-slide-page ng-repeat="item in vm.show.list | filter:mainVm.searchQuery">
           <streama-media-item item="item"></streama-media-item>
         </ion-slide-page>
       </ion-slides>
     </div>
 
-    <div ng-show="(vm.movie.list | filter:$root.searchQuery).length">
+    <div ng-show="(vm.movie.list | filter:mainVm.searchQuery).length">
       <h3>
         {{'DASHBOARD.DISCOVER_MOVIES' | translate}}
         <video-sort-order-dropdown ng-if="$root.serverVersion" class="pull-right" ng-model="vm.movie.sorter"
@@ -42,7 +42,7 @@
       </h3>
 
       <ion-slides options="vm.swiperOptions" slider="data.sliderMovies" class="ion-slides-poster">
-        <ion-slide-page ng-repeat="item in vm.movie.list | filter:$root.searchQuery">
+        <ion-slide-page ng-repeat="item in vm.movie.list | filter:mainVm.searchQuery">
           <streama-media-item item="item"></streama-media-item>
         </ion-slide-page>
       </ion-slides>
@@ -50,7 +50,7 @@
     </div>
 
 
-    <div ng-show="(vm.genericVideo.list | filter:$root.searchQuery).length">
+    <div ng-show="(vm.genericVideo.list | filter:mainVm.searchQuery).length">
       <h3>
         {{'DASHBOARD.DISCOVER_OTHER_VIDEOS' | translate}}
         <video-sort-order-dropdown ng-if="$root.serverVersion" class="pull-right" ng-model="vm.genericVideo.sorter"
@@ -58,7 +58,7 @@
       </h3>
 
       <ion-slides options="vm.swiperOptions" slider="data.sliderGenericVideos" class="ion-slides-poster">
-        <ion-slide-page ng-repeat="item in vm.genericVideo.list | filter:$root.searchQuery">
+        <ion-slide-page ng-repeat="item in vm.genericVideo.list | filter:mainVm.searchQuery">
           <streama-media-item item="item"></streama-media-item>
         </ion-slide-page>
       </ion-slides>
