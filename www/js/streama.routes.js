@@ -4,7 +4,20 @@ angular.module('streama').config(function($stateProvider, $urlRouterProvider) {
     .state('main', {
     url: '/main',
     abstract: true,
-    templateUrl: 'templates/main.html'
+    templateUrl: 'templates/main.html',
+    controller: 'mainCtrl as mainVm',
+    resolve: {
+      serverVersion: function (apiService, $rootScope) {
+        var domain = apiService.setup.getDomain();
+        return apiService.setup.getInfo(domain).then(function (response) {
+          var serverVersion = response.data.streamaVersion;
+          $rootScope.serverVersion = serverVersion;
+          return serverVersion;
+        }, function () {
+          return {};
+        });
+      }
+    }
   })
 
   .state('setup', {
@@ -19,17 +32,7 @@ angular.module('streama').config(function($stateProvider, $urlRouterProvider) {
   .state('main.dash', {
     url: '/dash',
 		resolve: {
-			currentUser: currentUserResolve,
-      serverVersion: function (apiService, $rootScope) {
-        var domain = apiService.setup.getDomain();
-        return apiService.setup.getInfo(domain).then(function (response) {
-          var serverVersion = response.data.streamaVersion;
-          $rootScope.serverVersion = serverVersion;
-          return serverVersion;
-        }, function () {
-          return {};
-        });
-      }
+			currentUser: currentUserResolve
 		},
 		views: {
 			'content': {

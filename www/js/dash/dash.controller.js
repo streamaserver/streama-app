@@ -6,7 +6,7 @@
     var vm = this;
     vm.openMediaDetail = openMediaDetail;
     $scope.$on('$stateChangeSuccess', onStateChangeSuccess);
-    $rootScope.$watch('searchQuery', onSearch);
+    $scope.$watch('mainVm.searchQuery', onSearch);
     init();
 
 
