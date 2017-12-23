@@ -81,12 +81,19 @@ body, .pane, .view {
   .menu .item {
     border-color: #25292b;
     background-color: #181a1b;
-    color: #fff; }
+    color: #fff;
+    font-weight: 400; }
     .menu .item .item-content {
       background: transparent;
-      color: inherit; }
+      color: inherit;
+      font-weight: 500; }
       .menu .item .item-content i {
         margin-right: 8px; }
+    .menu .item.item-divider {
+      background: #141415;
+      font-size: 12px;
+      text-transform: uppercase;
+      color: darkgrey; }
 
 .bar.bar-stable.bar-header {
   background: #181a1b;

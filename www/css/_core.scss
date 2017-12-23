@@ -23,14 +23,23 @@ body,.pane, .view{
     border-color: #25292b;
     background-color: #181a1b;
     color: #fff;
+    font-weight: 400;
 
     .item-content{
       background: transparent;
       color: inherit;
+      font-weight: 500;
 
       i{
         margin-right: 8px;
       }
+    }
+
+    &.item-divider{
+      background: #141415;
+      font-size: 12px;
+      text-transform: uppercase;
+      color: darkgrey;
     }
   }
 
