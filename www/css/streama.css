@@ -94,6 +94,8 @@ body, .pane, .view {
       font-size: 12px;
       text-transform: uppercase;
       color: darkgrey; }
+    .menu .item.active {
+      background: #1f779a; }
 
 .bar.bar-stable.bar-header {
   background: #181a1b;

@@ -41,6 +41,10 @@ body,.pane, .view{
       text-transform: uppercase;
       color: darkgrey;
     }
+
+    &.active{
+      background: $secondary;
+    }
   }
 
 }
