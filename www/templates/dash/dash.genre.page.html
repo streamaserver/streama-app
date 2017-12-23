@@ -1,0 +1,68 @@
+<ion-view title="Dashboard" class="dash">
+  <ion-nav-title>
+    <img src="img/logo.png" alt="Streama">
+  </ion-nav-title>
+  <ion-nav-buttons side="right">
+    <button class="button button-icon button-clear ion-ios-search" ng-click="mainVm.toggleSearch()">
+    </button>
+  </ion-nav-buttons>
+
+  <div class="dashboard-search-box item-input-inset" ng-show="mainVm.isSearchActive">
+    <label class="item-input-wrapper input-dark">
+      <i class="icon ion-ios-search placeholder-icon"></i>
+      <input type="search" placeholder="Search Media..." ng-model="mainVm.searchQuery" ng-model-options="{debounce: 333}">
+    </label>
+    <button class="button button-clear button-light" ng-click="mainVm.toggleSearch()">
+      Cancel
+    </button>
+  </div>
+
+  <ion-content class="dashboard" ng-class="{'is-search-active': mainVm.isSearchActive}">
+    <h1>Browse Genre: {{mainVm.selectedGenre.name}}</h1>
+
+    <div ng-show="(vm.show.list | filter:$root.searchQuery).length">
+      <h3>
+        {{'DASHBOARD.DISCOVER_SHOWS' | translate}}
+        <video-sort-order-dropdown ng-if="$root.serverVersion" class="pull-right" ng-model="vm.show.sorter"
+                                   ng-model-options="{getterSetter:true}" dropdown-type="'tvShow'"></video-sort-order-dropdown>
+      </h3>
+
+      <ion-slides options="vm.swiperOptions" slider="data.sliderTv" class="ion-slides-poster">
+        <ion-slide-page ng-repeat="item in vm.show.list | filter:$root.searchQuery">
+          <streama-media-item item="item"></streama-media-item>
+        </ion-slide-page>
+      </ion-slides>
+    </div>
+
+    <div ng-show="(vm.movie.list | filter:$root.searchQuery).length">
+      <h3>
+        {{'DASHBOARD.DISCOVER_MOVIES' | translate}}
+        <video-sort-order-dropdown ng-if="$root.serverVersion" class="pull-right" ng-model="vm.movie.sorter"
+                                   ng-model-options="{getterSetter:true}" dropdown-type="'movie'"></video-sort-order-dropdown>
+      </h3>
+
+      <ion-slides options="vm.swiperOptions" slider="data.sliderMovies" class="ion-slides-poster">
+        <ion-slide-page ng-repeat="item in vm.movie.list | filter:$root.searchQuery">
+          <streama-media-item item="item"></streama-media-item>
+        </ion-slide-page>
+      </ion-slides>
+
+    </div>
+
+
+    <div ng-show="(vm.genericVideo.list | filter:$root.searchQuery).length">
+      <h3>
+        {{'DASHBOARD.DISCOVER_OTHER_VIDEOS' | translate}}
+        <video-sort-order-dropdown ng-if="$root.serverVersion" class="pull-right" ng-model="vm.genericVideo.sorter"
+                                   ng-model-options="{getterSetter:true}" dropdown-type="'genericVideo'"></video-sort-order-dropdown>
+      </h3>
+
+      <ion-slides options="vm.swiperOptions" slider="data.sliderGenericVideos" class="ion-slides-poster">
+        <ion-slide-page ng-repeat="item in vm.genericVideo.list | filter:$root.searchQuery">
+          <streama-media-item item="item"></streama-media-item>
+        </ion-slide-page>
+      </ion-slides>
+    </div>
+
+  </ion-content>
+</ion-view>

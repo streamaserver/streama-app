@@ -11,6 +11,7 @@
 
 
     function init() {
+      $scope.mainVm.selectedGenre = null;
       $ionicSideMenuDelegate.canDragContent(false);
       vm.swiperOptions = initSwiperOptions();
 

@@ -25,6 +25,12 @@
           <i class="ion-search"></i>Search
         </ion-item>
         <div class="item item-divider">
+          Browse by Genre
+        </div>
+        <ion-item menu-close  ng-class="{'active': (genre.id == mainVm.selectedGenre.id)}" ng-repeat="genre in mainVm.genres" ng-click="mainVm.setGenre(genre)">
+          {{genre.name}}
+        </ion-item>
+        <div class="item item-divider">
           Account
         </div>
         <ion-item menu-close ng-click="$root.changeServerConnection()">

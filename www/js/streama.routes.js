@@ -16,6 +16,13 @@ angular.module('streama').config(function($stateProvider, $urlRouterProvider) {
         }, function () {
           return {};
         });
+      },
+      genres: function (apiService) {
+        return apiService.dash.listGenres().then(function (response) {
+          return response.data;
+        }, function () {
+          return [];
+        });
       }
     }
   })
@@ -38,6 +45,19 @@ angular.module('streama').config(function($stateProvider, $urlRouterProvider) {
 			'content': {
 				templateUrl: 'templates/dash/dash.page.html',
 				controller: 'DashCtrl as vm'
+			}
+		}
+  })
+
+  .state('main.dashGenre', {
+    url: '/dashGenre/:genreId',
+		resolve: {
+			currentUser: currentUserResolve
+		},
+		views: {
+			'content': {
+				templateUrl: 'templates/dash/dash.genre.page.html',
+				controller: 'DashGenreCtrl as vm'
 			}
 		}
   })
