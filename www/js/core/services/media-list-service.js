@@ -11,7 +11,7 @@
       };
 
 
-      function initMediaList(endpoint, defaultSort) {
+      function initMediaList(endpoint, defaultSort, defaultFilter) {
         var mediaListConfig = {
           total: 0,
           currentSort: defaultSort || {sort: 'title', order: 'ASC'},
@@ -19,7 +19,7 @@
           currentOffset: 0,
           isLoading: true,
           sorter: _.getterSetter(setSort, getSort),
-          filter: {
+          filter: defaultFilter || {
             tags: null,
             genre: null,
             title: null
