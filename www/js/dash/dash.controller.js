@@ -20,6 +20,10 @@
 
 
       vm.show = mediaListService.init(apiService.dash.listShows, {sort: 'name', order: 'ASC'});
+      vm.newestShow = mediaListService.init(apiService.dash.listShows, {sort: 'first_air_date', order: 'DESC'});
+      vm.newestMovie = mediaListService.init(apiService.dash.listMovies, {sort: 'release_date', order: 'DESC'});
+      vm.newestAddedShow = mediaListService.init(apiService.dash.listShows, {sort: 'dateCreated', order: 'ASC'});
+      vm.newestAddedMovie = mediaListService.init(apiService.dash.listMovies, {sort: 'dateCreated', order: 'ASC'});
       vm.movie = mediaListService.init(apiService.dash.listMovies, {sort: 'title', order: 'ASC'});
       vm.genericVideo = mediaListService.init(apiService.dash.listGenericVideos, {sort: 'title', order: 'ASC'});
 

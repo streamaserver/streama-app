@@ -72,6 +72,60 @@
    </div>
 
 
+    <div ng-if="$root.serverVersion">
+      <div ng-show="(vm.newestShow.list | filter:$root.searchQuery).length">
+        <h3>
+          {{'DASHBOARD.NEWEST_SHOWS' | translate}}
+        </h3>
+
+        <ion-slides options="vm.swiperOptions" slider="data.sliderTv" class="ion-slides-poster">
+          <ion-slide-page ng-repeat="item in vm.newestShow.list | filter:$root.searchQuery">
+            <streama-media-item item="item"></streama-media-item>
+          </ion-slide-page>
+        </ion-slides>
+      </div>
+
+
+      <div ng-show="(vm.newestMovie.list | filter:$root.searchQuery).length">
+        <h3>
+          {{'DASHBOARD.NEWEST_MOVIES' | translate}}
+        </h3>
+
+        <ion-slides options="vm.swiperOptions" slider="data.sliderTv" class="ion-slides-poster">
+          <ion-slide-page ng-repeat="item in vm.newestMovie.list | filter:$root.searchQuery">
+            <streama-media-item item="item"></streama-media-item>
+          </ion-slide-page>
+        </ion-slides>
+      </div>
+
+
+      <div ng-show="(vm.newestAddedShow.list | filter:$root.searchQuery).length">
+        <h3>
+          {{'DASHBOARD.NEWEST_ADDED_SHOWS' | translate}}
+        </h3>
+
+        <ion-slides options="vm.swiperOptions" slider="data.sliderTv" class="ion-slides-poster">
+          <ion-slide-page ng-repeat="item in vm.newestAddedShow.list | filter:$root.searchQuery">
+            <streama-media-item item="item"></streama-media-item>
+          </ion-slide-page>
+        </ion-slides>
+      </div>
+
+
+      <div ng-show="(vm.newestAddedMovie.list | filter:$root.searchQuery).length">
+        <h3>
+          {{'DASHBOARD.NEWEST_ADDED_MOVIES' | translate}}
+        </h3>
+
+        <ion-slides options="vm.swiperOptions" slider="data.sliderTv" class="ion-slides-poster">
+          <ion-slide-page ng-repeat="item in vm.newestAddedMovie.list | filter:$root.searchQuery">
+            <streama-media-item item="item"></streama-media-item>
+          </ion-slide-page>
+        </ion-slides>
+      </div>
+    </div>
+
+
     <div ng-show="(vm.show.list | filter:$root.searchQuery).length">
       <h3>
         {{'DASHBOARD.DISCOVER_SHOWS' | translate}}
