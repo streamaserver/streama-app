@@ -2,6 +2,8 @@ angular.module('streama.core')
 	.service('apiService', function ($http, localStorageService, $q) {
 		var basePath = localStorageService.get('streamaDomain');
 		var apiBase = 'api/v1/';
+		var genres = null;
+
 		return{
 
 			getBasePath: function () {
@@ -88,6 +90,19 @@ angular.module('streama.core')
 				},
         markAsCompleted: function (params) {
 					return $http.get(basePath + apiBase + 'dash/markAsCompleted', {params: params});
+				},
+        listGenres: function (params) {
+				  if(!genres){
+            return $http.get(basePath + apiBase + 'dash/listGenres', {params: params});
+          }
+          else{
+            var deferred = $q.defer();
+            if(genres){
+              deferred.resolve(genres);
+            }
+            return deferred.promise;
+          }
+
 				}
 			},
 
