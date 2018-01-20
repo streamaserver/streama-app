@@ -34,8 +34,12 @@ angular.module('streama.player').factory('playerService',
     function setVideoOptions(video, episodes) {
 
       var videoOptions = {};
-
-      videoOptions.videoSrc = _.get(video, 'files[0].src');
+      var videoSrc = _.get(video, 'files[0].src');
+      if(_.startsWith(videoSrc, '/')){
+        videoOptions.videoSrc = $rootScope.serverBasePath + videoSrc;
+      }else{
+        videoOptions.videoSrc = videoSrc;
+      }
       videoOptions.isExternalLink = true;
       videoOptions.videoStillImage = _.get(video, 'still_path') || _.get(video, 'backdrop_path');
       videoOptions.videoMetaTitle = _.get(video, 'title') || _.get(video, 'episodeString') + ' ' + _.get(video, 'name');
@@ -49,7 +53,11 @@ angular.module('streama.player').factory('playerService',
         id: video.id
       };
 
-      videoOptions.subtitles = video.subtitles;
+      videoOptions.subtitles = _.map(video.subtitles, function (subtitle) {
+        if(_.startsWith(subtitle.src, '/')){
+          subtitle.src = $rootScope.serverBasePath + subtitle.src;
+        }
+      });
       videoOptions.currentSubtitle = _.get(video, 'subtitles[0].id');
       videoOptions.onPlay = this.onVideoPlay.bind(videoOptions);
       videoOptions.onError = this.onVideoError.bind(videoOptions);
