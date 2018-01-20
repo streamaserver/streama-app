@@ -3,7 +3,7 @@
  */
 
 angular.module('streama.core')
-	.directive('streamaMediaContinueWatchingItem', function () {
+	.directive('streamaMediaContinueWatchingItem', function ($rootScope) {
 		return {
 			restrict: 'AE',
 			scope: {
@@ -21,7 +21,10 @@ angular.module('streama.core')
           var result = {};
 
           if(item.backdrop_image_src){
-            imagePath =  item.backdrop_image_src;
+            imagePath =  $rootScope.serverBasePath + item.backdrop_image_src;
+          }
+          else if(item.poster_image_src){
+            imagePath =  $rootScope.serverBasePath + item.poster_image_src;
           }
 
           else if(item.backdrop_path){

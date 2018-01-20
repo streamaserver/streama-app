@@ -3,6 +3,7 @@ angular.module('streama')
 
 		$rootScope.logout = logout;
 		$rootScope.changeServerConnection = changeServerConnection;
+		$rootScope.serverBasePath = localStorageService.get('streamaDomain');
 
     $ionicPlatform.ready(onPlatformReady);
 		$rootScope.navLogo = '<img class="title-image" src="img/logo.png" />';
