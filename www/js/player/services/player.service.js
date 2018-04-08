@@ -57,6 +57,7 @@ angular.module('streama.player').factory('playerService',
         if(_.startsWith(subtitle.src, '/')){
           subtitle.src = $rootScope.serverBasePath + subtitle.src;
         }
+        return subtitle;
       });
       videoOptions.currentSubtitle = _.get(video, 'subtitles[0].id');
       videoOptions.onPlay = this.onVideoPlay.bind(videoOptions);
