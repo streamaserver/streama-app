@@ -62,16 +62,18 @@
         <div class="setup-installation-wrapper">
           <h5>Connecting to: <strong>{{ vm.setup.domain }}</strong></h5>
 
-          <div class="list">
+          <form class="list" ng-submit="vm.login()">
             <label class="item item-input">
               <i class="icon ion-ios-person placeholder-icon"></i>
-              <input type="text" placeholder="Username" ng-model="vm.setup.username">
+              <input name="username" type="text" placeholder="Username" ng-model="vm.setup.username" ng-keypress="($event.charCode==13)? vm.login() : return">
             </label>
             <label class="item item-input">
               <i class="icon ion-key placeholder-icon"></i>
-              <input type="password" placeholder="Password" ng-model="vm.setup.password">
+              <input name="password" type="password" placeholder="Password" ng-model="vm.setup.password" ng-keypress="($event.charCode==13)? vm.login() : return">
             </label>
-          </div>
+
+            <button style="display: none;" type="button" ng-click="vm.login()">Submit</button>
+          </form>
 
         </div>
 
