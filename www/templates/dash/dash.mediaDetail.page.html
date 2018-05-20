@@ -13,6 +13,10 @@
       </div>
       <div class="col col-50" ng-if="vm.media.mediaType == 'episode'">
         <img class="media-detail-poster" ng-show="vm.media.backdrop_path" ng-src="https://image.tmdb.org/t/p/w1280/{{vm.media.backdrop_path}}"/>
+
+        <div style="margin-top: 16px;"  class="text-center">
+          <a class="icon-play ion-android-arrow-dropright" ng-click="vm.continueWatching()"></a>
+        </div>
       </div>
       <div class="col">
         <h2> {{vm.media.name || vm.media.title}}</h2>
