@@ -10,6 +10,13 @@
   .setup-slide-content{
     @include flexbox;
     @include flex-direction(column);
+
+    h2{
+      margin: 16px;
+      font-size: 18px;
+      border-bottom: 1px solid #ffffff2e;
+      padding-bottom: 16px;
+    }
   }
 
   .setup-logo-wrapper{

@@ -1114,6 +1114,11 @@ a {
   display: flex;
   -webkit-flex-direction: column;
   flex-direction: column; }
+  .setup-page .setup-slide-content h2 {
+    margin: 16px;
+    font-size: 18px;
+    border-bottom: 1px solid #ffffff2e;
+    padding-bottom: 16px; }
 .setup-page .setup-logo-wrapper {
   padding: 40px;
   display: -webkit-box;
