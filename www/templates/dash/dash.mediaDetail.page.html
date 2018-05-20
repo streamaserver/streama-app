@@ -69,7 +69,7 @@
 
 
 
-     <div ng-if="vm.media.mediaType === 'tvShow'">
+     <div ng-if="vm.media.mediaType === 'tvShow' || vm.media.mediaType == 'episode'">
        <hr>
        <div class="season-picker-list">
          <h4>{{'VIDEO.EPISODES' | translate}}</h4>
