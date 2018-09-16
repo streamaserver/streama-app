@@ -46,6 +46,13 @@ angular.module('streama.player').factory('playerService',
       videoOptions.episodeList = _.groupBy(episodes, 'season_number');
       videoOptions.hasNextEpisode = _.get(video, 'nextEpisode');
 
+      videoOptions.nextVideo = video.nextEpisode || video.nextVideo;
+      videoOptions.isAutoplayNextActive = !!video.nextEpisode;
+
+      if(videoOptions.nextVideo){
+        videoOptions.showNextButton = true;
+      }
+
       videoOptions.showEpisodeBrowser = episodes ? true : false;
       videoOptions.currentEpisode = {
         episode: video.episode_number,
@@ -101,7 +108,7 @@ angular.module('streama.player').factory('playerService',
      */
     function onVideoPlay(videoElement, socketData) {
       var that = this;
-      console.log('%c onVideoPlay', 'color: deeppink; font-weight: bold; text-shadow: 0 0 5px deeppink;');
+      // console.log('%c onVideoPlay', 'color: deeppink; font-weight: bold; text-shadow: 0 0 5px deeppink;');
 
       saveViewingStatus(that, videoElement);
 
