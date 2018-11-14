@@ -120,10 +120,16 @@ angular.module('streama.core')
 
 			player: {
 				video: function (videoId) {
-					return $http.get(basePath + apiBase + 'player/video/' + videoId);
+					return $http.get(basePath + apiBase + 'player/video/' + videoId, setProfileHeaders());
 				},
 				updateViewingStatus: function (params) {
-					return $http.get(basePath + apiBase + 'player/updateViewingStatus', {params: params});
+					return $http.get(basePath + apiBase + 'player/updateViewingStatus', {
+					  params: params,
+            headers: {
+					    'profileId': localStorageService.get('currentProfile').id || 0
+					  }
+
+          });
 				}
 			},
 
