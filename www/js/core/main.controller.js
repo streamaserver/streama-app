@@ -8,6 +8,9 @@ angular.module('streama.core').controller('mainCtrl', function (localStorageServ
   mainVm.genres = genres;
   mainVm.selectedGenre = null;
   mainVm.selectedProfile = null;
+  if(!localStorageService.get('currentProfile')) {
+    localStorageService.set('currentProfile', profiles[0]);
+  }
   mainVm.selectedProfile = localStorageService.get('currentProfile') || {};
 
   function toggleSearch() {
