@@ -4,8 +4,11 @@ angular.module('streama.core').controller('mainCtrl', function (localStorageServ
   mainVm.toggleSearch = toggleSearch;
   mainVm.setGenre = setGenre;
   mainVm.setProfile = setProfile;
+  mainVm.goToManageProfiles = goToManageProfiles;
   mainVm.genres = genres;
   mainVm.selectedGenre = null;
+  mainVm.selectedProfile = null;
+  mainVm.selectedProfile = localStorageService.get('currentProfile') || {};
 
   function toggleSearch() {
     mainVm.searchQuery = '';
@@ -23,7 +26,12 @@ angular.module('streama.core').controller('mainCtrl', function (localStorageServ
   }
 
   function setProfile(profile) {
+    mainVm.selectedProfile = profile;
     localStorageService.set('currentProfile', profile);
     $state.go('main.dash',{},{reload:true})
+  }
+
+  function goToManageProfiles() {
+    window.open(localStorageService.get('streamaDomain') + '#/sub-profiles', '_system')
   }
 });
