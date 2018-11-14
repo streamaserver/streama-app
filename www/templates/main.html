@@ -25,6 +25,12 @@
           <i class="ion-search"></i>Search
         </ion-item>
         <div class="item item-divider">
+          Available profiles
+        </div>
+        <ion-item menu-close  ng-repeat="profile in mainVm.profiles" ng-click="mainVm.setProfile(profile)">
+          {{profile.profile_name}}
+        </ion-item>
+        <div class="item item-divider">
           Browse by Genre
         </div>
         <ion-item menu-close  ng-class="{'active': (genre.id == mainVm.selectedGenre.id)}" ng-repeat="genre in mainVm.genres" ng-click="mainVm.setGenre(genre)">

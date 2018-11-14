@@ -4,6 +4,13 @@ angular.module('streama.core')
 		var apiBase = 'api/v1/';
 		var genres = null;
 
+		function setProfileHeaders() {
+		  var profileId = localStorageService.get('currentProfile').id || 0;
+		  return {
+        headers: {'profileId': profileId}
+      }
+    }
+
 		return{
 
 			getBasePath: function () {
@@ -65,7 +72,7 @@ angular.module('streama.core')
 
 			dash: {
 				listContinueWatching: function () {
-					return $http.get(basePath + apiBase + 'dash/listContinueWatching');
+					return $http.get(basePath + apiBase + 'dash/listContinueWatching', setProfileHeaders());
 				},
 				listShows: function (params) {
 					return $http.get(basePath + apiBase + 'dash/listShows', {params: params});
@@ -118,6 +125,21 @@ angular.module('streama.core')
 				updateViewingStatus: function (params) {
 					return $http.get(basePath + apiBase + 'player/updateViewingStatus', {params: params});
 				}
-			}
+			},
+
+      profile: {
+        save: function (params) {
+          return $http.post(basePath + 'profile/save',  params)
+        },
+        update: function (params) {
+          return $http.put(basePath + 'profile/update.json',  params)
+        },
+        delete: function (id) {
+          return $http.delete(basePath + 'profile/delete.json',  {params: {id: id}})
+        },
+        getUserProfiles: function () {
+          return $http.get(basePath +  'profile/getUserProfiles.json')
+        }
+      }
 		}
 });

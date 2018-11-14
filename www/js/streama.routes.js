@@ -7,6 +7,7 @@ angular.module('streama').config(function($stateProvider, $urlRouterProvider) {
     templateUrl: 'templates/main.html',
     controller: 'mainCtrl as mainVm',
     resolve: {
+      profiles: getProfiles,
       serverVersion: function (apiService, $rootScope) {
         var domain = apiService.setup.getDomain();
         return apiService.setup.getInfo(domain).then(function (response) {
@@ -39,7 +40,7 @@ angular.module('streama').config(function($stateProvider, $urlRouterProvider) {
   .state('main.dash', {
     url: '/dash',
 		resolve: {
-			currentUser: currentUserResolve
+      currentUser: currentUserResolve
 		},
 		views: {
 			'content': {
@@ -116,4 +117,10 @@ function currentUserReject(apiService, $state) {
 			toastr.error('An internal Server-Error occured.');
 		}
 	})
+}
+
+function getProfiles (apiService) {
+  return apiService.profile.getUserProfiles().then( function (resp) {
+    return resp.data;
+  })
 }
