@@ -36,3 +36,18 @@ More info on this can be found on the Ionic [Getting Started](https://ionicframe
 ## Issues
 
 Issues have been disabled on this repo. If you do find an issue or have a question, consider posting it on the [Ionic Forum](https://forum.ionicframework.com/). If there is truly an error, follow our guidelines for [submitting an issue](https://ionicframework.com/submit-issue/) to the main Ionic repository.
+
+
+## Build release
+- update version in config.xml, last digit set to 1
+- run `cordova build android --release`
+- run `jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore my-release-key.keystore platforms/android/build/outputs/apk/android-x86-release-unsigned.apk alias_name`
+- run `cd platforms/android/build/outputs/apk`
+- rn (& replace version first) `~/Library/Android/sdk/build-tools/26.0.2/zipalign -v 4 android-x86-release-unsigned.apk streama_x86_0.1.10.1.apk`
+- upload to google play console
+- change version in config.xml again, increasing the last digit to 2
+- open new terminal in root of streama-app
+- run `cordova build android --release`
+- run again `jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore my-release-key.keystore platforms/android/build/outputs/apk/android-armv7-release-unsigned.apk alias_name `
+- run again `cd platforms/android/build/outputs/apk`
+- run again (& replace version) `~/Library/Android/sdk/build-tools/26.0.2/zipalign -v 4 android-armv7-release-unsigned.apk streama_armv7_0.1.10.1.apk`
