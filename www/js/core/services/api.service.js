@@ -123,18 +123,9 @@ angular.module('streama.core')
 			},
 
       profile: {
-        save: function (params) {
-          return $http.post(basePath + 'profile/save',  params)
-        },
-        update: function (params) {
-          return $http.put(basePath + 'profile/update.json',  params)
-        },
-        delete: function (id) {
-          return $http.delete(basePath + 'profile/delete.json',  {params: {id: id}})
-        },
         getUserProfiles: function () {
-          return $http.get(basePath +  'profile/getUserProfiles.json')
+          return $http.get(basePath +  'profile/getUserProfiles.json');
         }
       }
-		}
+		};
 });

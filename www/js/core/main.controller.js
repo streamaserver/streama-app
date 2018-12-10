@@ -31,10 +31,10 @@ angular.module('streama.core').controller('mainCtrl', function (localStorageServ
   function setProfile(profile) {
     mainVm.selectedProfile = profile;
     localStorageService.set('currentProfile', profile);
-    $state.go('main.dash',{},{reload:true})
+    $state.go('main.dash',{},{reload:true});
   }
 
   function goToManageProfiles() {
-    window.open(localStorageService.get('streamaDomain') + '#/sub-profiles', '_system')
+    window.open(localStorageService.get('streamaDomain') + '#/sub-profiles', '_system');
   }
 });

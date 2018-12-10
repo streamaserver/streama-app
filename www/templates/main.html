@@ -30,7 +30,12 @@
         <ion-item menu-close ng-repeat="profile in mainVm.profiles"
                   ng-class="{'active': (profile.id == mainVm.selectedProfile.id)}"
                    ng-click="mainVm.setProfile(profile)">
-          {{profile.profile_name}}
+          <div class="profile-item-container">
+            <div class="avatar-in-header" ng-style="{'background-color': '#'+(profile.avatarColor || '0b74b2')}">
+              <img src="img/streama-profile-smiley.png" alt="">
+            </div>
+            {{profile.profileName}}
+          </div>
         </ion-item>
         <ion-item menu-close ng-click="mainVm.goToManageProfiles()">
           Manage Profiles
