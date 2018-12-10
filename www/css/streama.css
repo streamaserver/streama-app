@@ -96,6 +96,8 @@ body, .pane, .view {
       color: darkgrey; }
     .menu .item.active {
       background: #1f779a; }
+    .menu .item.active-darkgrey {
+      background: darkgrey; }
 
 .bar.bar-stable.bar-header {
   background: #181a1b;
