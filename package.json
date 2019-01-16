@@ -3,15 +3,16 @@
   "version": "0.0.1",
   "description": "streama: An Ionic project",
   "devDependencies": {
-    "@ionic/v1-toolkit": "1.0.8",
+    "@ionic/v1-toolkit": "1.0.12",
     "gulp": "^3.5.6",
     "gulp-clean-css": "^3.7.0",
     "gulp-rename": "^1.2.0",
     "gulp-sass": "^3.1.0"
   },
   "dependencies": {
+    "cordova": "^8.1.2",
     "cordova-android": "6.3.0",
-    "cordova-ios": "4.5.2",
+    "cordova-ios": "^4.5.5",
     "cordova-plugin-crosswalk-webview": "^2.3.0",
     "cordova-plugin-device": "^1.1.4",
     "cordova-plugin-ionic-webview": "^1.1.16",

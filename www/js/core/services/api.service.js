@@ -116,8 +116,16 @@ angular.module('streama.core')
 					return $http.get(basePath + apiBase + 'player/video/' + videoId);
 				},
 				updateViewingStatus: function (params) {
-					return $http.get(basePath + apiBase + 'player/updateViewingStatus', {params: params});
+					return $http.get(basePath + apiBase + 'player/updateViewingStatus', {
+					  params: params
+          });
 				}
-			}
-		}
+			},
+
+      profile: {
+        getUserProfiles: function () {
+          return $http.get(basePath +  'profile/getUserProfiles.json');
+        }
+      }
+		};
 });
