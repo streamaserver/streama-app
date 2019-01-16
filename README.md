@@ -30,3 +30,22 @@ To start this app, run
   npm install
   ionic serve
 ```
+
+
+# building for release
+### first x86
+- change version-number in config.xml (last digit should be 1)
+- run `nvm use v9.9.0`
+- run `ionic cordova build --release android`
+- run `jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore my-release-key.keystore platforms/android/build/outputs/apk/android-x86-release-unsigned.apk alias_name`
+- `cd platforms/android/build/outputs/apk/`
+- adjust v-number & run ` ~/Library/Android/sdk/build-tools/26.0.2/zipalign -v 4 android-x86-release-unsigned.apk streama_x86_0.2.0.1.apk`
+
+### then armv7
+- new Terminal
+- change version-number last digit to 2
+- run `nvm use v9.9.0`
+- run `ionic cordova build --release android`
+- run `jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore my-release-key.keystore platforms/android/build/outputs/apk/android-armv7-release-unsigned.apk alias_name`
+- `cd platforms/android/build/outputs/apk/`
+- adjust v-number & run ` ~/Library/Android/sdk/build-tools/26.0.2/zipalign -v 4 android-x86-release-unsigned.apk streama_x86_0.2.0.1.apk`
