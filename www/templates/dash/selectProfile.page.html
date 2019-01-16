@@ -1,0 +1,19 @@
+<ion-view title="Dashboard" class="dash">
+  <ion-nav-title>
+    <img src="img/logo.png" alt="Streama">
+  </ion-nav-title>
+
+  <ion-content class="dashboard">
+    <h1>Select Profile</h1>
+
+    <div class="select-profile-container">
+      <div class="item-profile-container" ng-repeat="profile in vm.profiles" ng-click="vm.setCurrentProfile(profile)">
+        <div class="avatar" ng-style="{'background-color': '#'+(profile.avatarColor)}">
+          <img src="img/streama-profile-smiley.png" alt="">
+        </div>
+        <p class="profile-name">{{profile.profileName}}</p>
+      </div>
+    </div>
+
+  </ion-content>
+</ion-view>

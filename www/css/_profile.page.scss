@@ -1,3 +1,5 @@
+
+
 .profile {
   padding: 20px;
   position: relative;
@@ -28,4 +30,55 @@
   right: 0;
   bottom: 0;
   left: 0;
+}
+
+$avatar-width: 130px;
+
+.select-profile-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  margin: 40px 0;
+}
+
+
+.item-profile-container {
+  width: $avatar-width;
+  display: flex;
+  flex-direction: column;
+  margin: 0 5px;
+
+  .avatar {
+    box-sizing: border-box;
+    min-width: 100%;
+    border: 3px solid transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: $avatar-width;
+    img {
+      z-index: 100;
+      width: $avatar-width;
+    }
+  }
+
+  .profile-name {
+    margin-top: 10px;
+    color: #a6a6a6;
+    font-size: 13px;
+    min-width: 100%;
+    text-align: center;
+  }
+
+  &:hover {
+    cursor: pointer;
+    .avatar {
+      border: 3px solid lighten(#a6a6a6, 40%);
+    }
+
+    .profile-name {
+      color: lighten(#a6a6a6, 40%);
+    }
+  }
 }

@@ -50,6 +50,20 @@ angular.module('streama').config(function($stateProvider, $urlRouterProvider) {
 		}
   })
 
+  .state('main.selectProfile', {
+    url: '/selectProfile',
+		resolve: {
+      currentUser: currentUserResolve,
+      profiles: getProfiles
+		},
+		views: {
+			'content': {
+				templateUrl: 'templates/dash/selectProfile.page.html',
+				controller: 'SelectProfileCtrl as vm'
+			}
+		}
+  })
+
   .state('main.dashGenre', {
     url: '/dashGenre/:genreId',
 		resolve: {

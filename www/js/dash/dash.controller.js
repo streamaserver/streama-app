@@ -2,7 +2,7 @@
 'use strict';
 
   angular.module('streama.dash')
-  .controller('DashCtrl', function(currentUser, apiService, $ionicSideMenuDelegate, $ionicScrollDelegate, $state, $scope, mediaListService, $rootScope) {
+  .controller('DashCtrl', function(currentUser, apiService, $ionicSideMenuDelegate, $ionicScrollDelegate, $state, $scope, mediaListService, $ionicNavBarDelegate) {
     var vm = this;
     vm.openMediaDetail = openMediaDetail;
     $scope.$on('$stateChangeSuccess', onStateChangeSuccess);
@@ -11,6 +11,7 @@
 
 
     function init() {
+      $ionicNavBarDelegate.showBackButton(false);
       $scope.mainVm.selectedGenre = null;
       $ionicSideMenuDelegate.canDragContent(false);
       vm.swiperOptions = mediaListService.initSwiperOptions();
