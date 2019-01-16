@@ -88,6 +88,8 @@
 
     // Custom Globals
     "globals"       : {
-      "angular": true
+      "angular": true,
+      "cordova": true,
+      "StatusBar": true
     }        // additional predefined global variables
 }
