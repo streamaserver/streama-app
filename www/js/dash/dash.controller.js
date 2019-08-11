@@ -2,7 +2,7 @@
 'use strict';
 
   angular.module('streama.dash')
-  .controller('DashCtrl', function(currentUser, apiService, $ionicSideMenuDelegate, $ionicScrollDelegate, $state, $scope, mediaListService, $ionicNavBarDelegate) {
+  .controller('DashCtrl', function(currentUser, apiService, $ionicSideMenuDelegate, $ionicScrollDelegate, $state, $scope, mediaListService, $ionicNavBarDelegate, $timeout) {
     var vm = this;
     vm.openMediaDetail = openMediaDetail;
     $scope.$on('$stateChangeSuccess', onStateChangeSuccess);
@@ -11,6 +11,7 @@
 
 
     function init() {
+      vm.isLoading = true;
       $ionicNavBarDelegate.showBackButton(false);
       $scope.mainVm.selectedGenre = null;
       $ionicSideMenuDelegate.canDragContent(false);
@@ -31,6 +32,10 @@
 
       apiService.dash.listNewReleases().then(function (response) {
         vm.newReleases = response.data;
+
+        $timeout(function () {
+          vm.isLoading = false;
+        }, 1000);
       });
       apiService.dash.listRecommendations().then(function (response) {
         vm.recommendations = response.data;

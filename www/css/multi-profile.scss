@@ -1,0 +1,26 @@
+.avatar-in-header {
+  width: 30px;
+  height: 30px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 5px;
+
+}
+.avatar-in-header > img {
+  z-index: 100;
+  width: 30px;
+}
+
+.profile-item-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.current-profile-icon{
+  display: flex;
+  color: white;
+  align-items: center;
+}

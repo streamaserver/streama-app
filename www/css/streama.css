@@ -94,7 +94,7 @@ body, .pane, .view {
       font-size: 12px;
       text-transform: uppercase;
       color: darkgrey; }
-    .menu .item.active {
+    .menu .item.active, .menu .item.active-darkgrey {
       background: #1f779a; }
 
 .bar.bar-stable.bar-header {
@@ -974,26 +974,22 @@ a {
   .media-continue-watching-item .continue-watching-info i {
     font-size: 30px; }
 
-.media-progress-wrapper {
-  margin-top: 8px;
-  margin-bottom: 8px; }
-  .media-progress-wrapper .progress-time {
-    font-size: 80%;
-    opacity: 0.7; }
-  .media-progress-wrapper .progress-info {
-    font-weight: bold;
-    line-height: 1.2em;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 190px; }
-  .media-progress-wrapper .media-progress {
-    margin-top: 5px;
-    height: 3px;
-    background-color: #333; }
-  .media-progress-wrapper .progress-inner {
-    height: 3px;
-    background-color: #B0DDEF; }
+.media-progress-wrapper .progress-time {
+  font-size: 80%;
+  opacity: 0.7; }
+.media-progress-wrapper .progress-info {
+  font-weight: bold;
+  line-height: 1.2em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 165px; }
+.media-progress-wrapper .media-progress {
+  height: 5px;
+  background-color: #333; }
+.media-progress-wrapper .progress-inner {
+  height: 5px;
+  background-color: #B0DDEF; }
 
 .media-poster-item .media-item-inner {
   height: 230px;
@@ -1064,6 +1060,72 @@ a {
     display: inline-block;
     background: transparent;
     box-shadow: 0px 2px 2px 2px rgba(0, 0, 0, 0.18); }
+
+.avatar-in-header {
+  width: 30px;
+  height: 30px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 5px; }
+
+.avatar-in-header > img {
+  z-index: 100;
+  width: 30px; }
+
+.profile-item-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center; }
+
+.current-profile-icon {
+  display: flex;
+  color: white;
+  align-items: center; }
+
+.streama-main.is-child {
+  background: #B0DDEF; }
+  .streama-main.is-child body, .streama-main.is-child .pane, .streama-main.is-child .view {
+    background: #B0DDEF; }
+  .streama-main.is-child ion-side-menu-content .bar.bar-stable.bar-header {
+    background: #257696;
+    font-family: 'Indie Flower', cursive; }
+  .streama-main.is-child .bar-stable .button.button-clear {
+    color: white; }
+  .streama-main.is-child .dash-search input {
+    background: white; }
+  .streama-main.is-child .dash-search .form-control-feedback {
+    color: #257696; }
+  .streama-main.is-child .dashboard {
+    font-family: 'Indie Flower', cursive; }
+    .streama-main.is-child .dashboard hr {
+      border-color: #9bd4eb; }
+    .streama-main.is-child .dashboard h3 {
+      font-family: 'Indie Flower', cursive;
+      font-size: 32px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25); }
+    .streama-main.is-child .dashboard .form-control {
+      background: white;
+      font-size: 16px;
+      border-radius: 20px; }
+    .streama-main.is-child .dashboard .ui-select-bootstrap input {
+      font-size: 16px;
+      margin-bottom: 0;
+      height: 1.55em; }
+  .streama-main.is-child .media-list-item, .streama-main.is-child .media-continue-watching-item {
+    border-radius: 40px;
+    overflow: hidden;
+    padding: 0;
+    border: 4px solid white; }
+  .streama-main.is-child .spinner-ios, .streama-main.is-child .spinner-ios-small {
+    stroke: white; }
+  .streama-main.is-child .dashboard .ion-slides-continue-watching .swiper-container {
+    height: 365px; }
+  .streama-main.is-child .media-item .play-text {
+    padding: 12px 30px; }
+  .streama-main.is-child .media-item .info-icon {
+    right: 25px; }
 
 .profile {
   padding: 20px;
@@ -1204,15 +1266,18 @@ a {
 
 .dashboard {
   padding: 15px; }
+  .dashboard .full-page-spinner {
+    text-align: center;
+    padding: 63px; }
   .dashboard h3 {
     margin-top: 30px;
     line-height: 28px; }
   .dashboard .ion-slides-poster {
     height: 230px; }
   .dashboard .ion-slides-continue-watching .swiper-container {
-    height: 235px; }
+    height: 367px; }
   .dashboard .ion-slides-continue-watching .swiper-slide {
-    width: 250px; }
+    width: 210px; }
   .dashboard .ion-slides-new-releases .swiper-container {
     height: 330px; }
   .dashboard .ion-slides-poster .swiper-container {

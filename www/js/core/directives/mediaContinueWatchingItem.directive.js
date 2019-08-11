@@ -20,16 +20,16 @@ angular.module('streama.core')
           var imagePath = 'img/poster-not-found.png';
           var result = {};
 
-          if(item.backdrop_image_src){
-            imagePath =  $rootScope.serverBasePath + item.backdrop_image_src;
-          }
-          else if(item.poster_image_src){
+          // if(item.backdrop_image_src){
+          //   imagePath =  $rootScope.serverBasePath + item.backdrop_image_src;
+          // }
+          if(item.poster_image_src){
             imagePath =  $rootScope.serverBasePath + item.poster_image_src;
           }
 
-          else if(item.backdrop_path){
-            imagePath =  'https://image.tmdb.org/t/p/w300/' + item.backdrop_path;
-          }
+          // else if(item.backdrop_path){
+          //   imagePath =  'https://image.tmdb.org/t/p/w300/' + item.backdrop_path;
+          // }
 
           else if(item.poster_path){
             imagePath =  'https://image.tmdb.org/t/p/w300/' + item.poster_path;

@@ -11,6 +11,25 @@
       $ionicPlatform.ready(onPlatformReady);
       $rootScope.navLogo = '<img class="title-image" src="img/logo.png" />';
 
+      initProfiles();
+
+
+      function initProfiles() {
+        apiService.profile.getUserProfiles().then( function (resp) {
+          var profiles = resp.data;
+          $rootScope.profiles = profiles;
+          $rootScope.selectedProfile = null;
+          if(!localStorageService.get('currentProfile')) {
+            if(profiles.length > 1){
+              $state.go('main.selectProfile');
+            }
+            else{
+              localStorageService.set('currentProfile', profiles[0]);
+            }
+          }
+          $rootScope.selectedProfile = localStorageService.get('currentProfile') || {};
+        });
+      }
 
       function onPlatformReady() {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard

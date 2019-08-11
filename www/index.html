@@ -16,6 +16,8 @@
       }
     </script>-->
 
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower&display=swap" rel="stylesheet">
+
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
     <link href="lib/owl.carousel/dist/assets/owl.carousel.css" rel="stylesheet">
     <link href="lib/owl.carousel/dist/assets/owl.theme.default.css" rel="stylesheet">
@@ -92,7 +94,7 @@
 
   </head>
 
-  <body ng-app="streama">
+  <body ng-app="streama" class="streama-main" ng-class="{'is-child': $root.selectedProfile.isChild}">
     <ion-nav-view></ion-nav-view>
   </body>
 </html>

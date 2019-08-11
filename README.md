@@ -48,4 +48,4 @@ To start this app, run
 - run `ionic cordova build --release android`
 - run `jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore my-release-key.keystore platforms/android/build/outputs/apk/android-armv7-release-unsigned.apk alias_name`
 - `cd platforms/android/build/outputs/apk/`
-- adjust v-number & run ` ~/Library/Android/sdk/build-tools/26.0.2/zipalign -v 4 android-x86-release-unsigned.apk streama_x86_0.2.0.1.apk`
+- adjust v-number & run ` ~/Library/Android/sdk/build-tools/26.0.2/zipalign -v 4 android-armv7-release-unsigned.apk streama_armv7_0.2.0.2.apk`

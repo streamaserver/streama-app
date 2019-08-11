@@ -1,10 +1,14 @@
 <div class="media-item media-continue-watching-item" ng-click="playMedia($event, item)">
-  <div class="media-item-inner" style="height: 146px;" ng-style="::getImage(item.video)">
+  <div class="media-item-inner" style="height: 300px;" ng-style="::getImage(item.video)">
 
     <a class="play-icon ion-ios-play" ui-sref="player({videoId: item.video.id})" ui-sref-opts="{reload: true, notify: true}"></a>
   </div>
 
   <div class="media-progress-wrapper">
+
+    <div class="media-progress" ng-if="item.runtime">
+      <div class="progress-inner" style="width: {{item.currentPlayTime / item.runtime * 100}}%;"></div>
+    </div>
 
     <div class="row">
       <div class="col">
@@ -15,9 +19,6 @@
 
         <div class="progress-time"><span ng-bind="::(item.currentPlayTime | streamaSecondsToDateTime | date:'mm:ss')"></span> min</div>
 
-        <div class="media-progress" ng-if="item.runtime">
-          <div class="progress-inner" style="width: {{item.currentPlayTime / item.runtime * 100}}%;"></div>
-        </div>
       </div>
       <div class="continue-watching-info" ui-sref="main.mediaDetail({mediaId: item.video.id, mediaType: item.video.mediaType, isContinuing: true})">
         <i class="ion-ios-information-outline" ></i>

@@ -42,7 +42,7 @@ body,.pane, .view{
       color: darkgrey;
     }
 
-    &.active{
+    &.active, &.active-darkgrey{
       background: $secondary;
     }
   }

@@ -6,6 +6,13 @@
       <ion-nav-buttons side="left">
         <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
         </button>
+
+        <div class="current-profile-icon" menu-toggle="left">
+          <div class="avatar-in-header" ng-style="{'background-color': '#'+($root.selectedProfile.avatarColor || '0b74b2')}">
+            <img src="img/streama-profile-smiley.png" alt="">
+          </div>
+          {{$root.selectedProfile.profileName}}
+        </div>
       </ion-nav-buttons>
     </ion-nav-bar>
 
@@ -28,7 +35,7 @@
           Available profiles
         </div>
         <ion-item menu-close ng-repeat="profile in mainVm.profiles"
-                  ng-class="{'active-darkgrey': (profile.id == mainVm.selectedProfile.id)}"
+                  ng-class="{'active-darkgrey': (profile.id == $root.selectedProfile.id)}"
                    ng-click="mainVm.setProfile(profile)">
           <div class="profile-item-container">
             <div class="avatar-in-header" ng-style="{'background-color': '#'+(profile.avatarColor || '0b74b2')}">

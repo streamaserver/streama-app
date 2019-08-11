@@ -1,6 +1,11 @@
 .dashboard{
   padding: 15px;
 
+  .full-page-spinner{
+    text-align: center;
+    padding: 63px;
+  }
+
   h3{
     margin-top: 30px;
     line-height: 28px;
@@ -12,11 +17,11 @@
 
   .ion-slides-continue-watching{
     .swiper-container {
-      height: 235px;
+      height: 367px;
     }
 
     .swiper-slide {
-      width: 250px;
+      width: 210px;
     }
   }
 

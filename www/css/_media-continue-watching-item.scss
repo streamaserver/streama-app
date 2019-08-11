@@ -15,8 +15,6 @@
 
 
 .media-progress-wrapper{
-  margin-top: 8px;
-  margin-bottom: 8px;
 
   .progress-time{
     font-size: 80%;
@@ -29,16 +27,15 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    max-width: 190px;
+    max-width: 165px;
   }
   .media-progress{
-    margin-top: 5px;
-    height: 3px;
+    height: 5px;
     background-color: #333;
   }
 
   .progress-inner{
-    height: 3px;
+    height: 5px;
     background-color: $primary;
   }
 }

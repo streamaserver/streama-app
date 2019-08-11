@@ -1,4 +1,4 @@
-angular.module('streama.core').controller('mainCtrl', function (localStorageService, profiles, apiService, genres, $state, $ionicHistory) {
+angular.module('streama.core').controller('mainCtrl', function (localStorageService, profiles, apiService, genres, $state, $rootScope) {
   var mainVm = this;
   mainVm.profiles = profiles;
   mainVm.toggleSearch = toggleSearch;
@@ -7,16 +7,6 @@ angular.module('streama.core').controller('mainCtrl', function (localStorageServ
   mainVm.goToManageProfiles = goToManageProfiles;
   mainVm.genres = genres;
   mainVm.selectedGenre = null;
-  mainVm.selectedProfile = null;
-  if(!localStorageService.get('currentProfile')) {
-    if(profiles.length > 1){
-      $state.go('main.selectProfile');
-    }
-    else{
-      localStorageService.set('currentProfile', profiles[0]);
-    }
-  }
-  mainVm.selectedProfile = localStorageService.get('currentProfile') || {};
 
   function toggleSearch() {
     mainVm.searchQuery = '';
@@ -34,7 +24,7 @@ angular.module('streama.core').controller('mainCtrl', function (localStorageServ
   }
 
   function setProfile(profile) {
-    mainVm.selectedProfile = profile;
+    $rootScope.selectedProfile = profile;
     localStorageService.set('currentProfile', profile);
     $state.go('main.dash',{},{reload:true});
   }

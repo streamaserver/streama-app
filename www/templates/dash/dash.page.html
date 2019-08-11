@@ -18,8 +18,11 @@
   </div>
 
   <ion-content class="dashboard" ng-class="{'is-search-active': mainVm.isSearchActive}">
+    <div class="full-page-spinner" ng-if="vm.isLoading">
+      <ion-spinner  name="crescent" color="light"></ion-spinner>
+    </div>
 
-    <div ng-if="vm.newReleases.length && !mainVm.searchQuery" class="new-releases-slider">
+    <div ng-if="vm.newReleases.length && !mainVm.searchQuery && !vm.isLoading" class="new-releases-slider">
       <h3>{{'DASHBOARD.NEW_RELEASES' | translate}}</h3>
 
       <ion-slides options="vm.swiperHighlightOptions" slider="data.sliderHighlights" class="ion-slides-new-releases">
@@ -46,7 +49,7 @@
     </div>
 
 
-    <div ng-show="((vm.continueWatchingList | filter:mainVm.searchQuery).length)">
+    <div ng-show="((vm.continueWatchingList | filter:mainVm.searchQuery).length)" ng-if="!vm.isLoading">
       <h3>{{'DASHBOARD.CONTINUE_WATCHING' | translate}}</h3>
 
       <ion-slides options="vm.swiperOptions" slider="data.sliderContinueWatching" class="ion-slides-continue-watching">
@@ -61,7 +64,7 @@
       <!--<streama-media-continue-watching-item item="item"></streama-media-continue-watching-item>-->
     <!--</div>-->
 
-   <div ng-show="vm.recommendations.length && ((vm.recommendations | filter:mainVm.searchQuery).length)">
+   <div ng-show="vm.recommendations.length && ((vm.recommendations | filter:mainVm.searchQuery).length)" ng-if="!vm.isLoading">
      <h3>{{'DASHBOARD.RECOMMENDATIONS' | translate}}</h3>
 
      <ion-slides options="vm.swiperOptions" slider="data.sliderRecommendations" class="ion-slides-poster">
@@ -72,7 +75,7 @@
    </div>
 
 
-    <div ng-if="$root.serverVersion && !mainVm.searchQuery">
+    <div ng-if="$root.serverVersion && !mainVm.searchQuery && !vm.isLoading">
       <div ng-show="(vm.newestShow.list | filter:mainVm.searchQuery).length">
         <h3>
           {{'DASHBOARD.NEWEST_SHOWS' | translate}}
@@ -126,7 +129,7 @@
     </div>
 
 
-    <div ng-show="(vm.show.list | filter:mainVm.searchQuery).length">
+    <div ng-show="(vm.show.list | filter:mainVm.searchQuery).length" ng-if="!vm.isLoading">
       <h3>
         {{'DASHBOARD.DISCOVER_SHOWS' | translate}}
         <video-sort-order-dropdown ng-if="$root.serverVersion" class="pull-right" ng-model="vm.show.sorter"
@@ -140,7 +143,7 @@
       </ion-slides>
     </div>
 
-    <div ng-show="(vm.movie.list | filter:mainVm.searchQuery).length">
+    <div ng-show="(vm.movie.list | filter:mainVm.searchQuery).length" ng-if="!vm.isLoading">
       <h3>
         {{'DASHBOARD.DISCOVER_MOVIES' | translate}}
         <video-sort-order-dropdown ng-if="$root.serverVersion" class="pull-right" ng-model="vm.movie.sorter"
@@ -156,7 +159,7 @@
     </div>
 
 
-    <div ng-show="(vm.genericVideo.list | filter:mainVm.searchQuery).length">
+    <div ng-show="(vm.genericVideo.list | filter:mainVm.searchQuery).length" ng-if="!vm.isLoading">
       <h3>
         {{'DASHBOARD.DISCOVER_OTHER_VIDEOS' | translate}}
         <video-sort-order-dropdown ng-if="$root.serverVersion" class="pull-right" ng-model="vm.genericVideo.sorter"
